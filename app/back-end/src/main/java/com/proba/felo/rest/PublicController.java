@@ -21,7 +21,7 @@ public class PublicController {
         return userService.getUsers().size();
     }
 
-    @GetMapping("/numberOfBooks")
+    @GetMapping("/numberOfArticles")
     public Integer getNumberOfBooks() {
         return articleService.getArticles().size();
     }
