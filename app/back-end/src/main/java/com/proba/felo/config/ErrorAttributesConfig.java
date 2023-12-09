@@ -1,4 +1,4 @@
-package com.ivanfranchin.bookapi.config;
+package com.proba.felo.config;
 
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.error.ErrorAttributeOptions.Include;

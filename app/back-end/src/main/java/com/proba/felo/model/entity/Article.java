@@ -13,8 +13,9 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "book")
-public class Book {
+public class Article {
     @Id
     private String isbn;
     private String title;
+    private String content;
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class CreateBookRequest {
+public class CreateArticleRequest {
 
     @Schema(example = "9781849518260")
     @NotBlank
@@ -15,4 +15,8 @@ public class CreateBookRequest {
     @Schema(example = "Spring Security 3.1")
     @NotBlank
     private String title;
+
+    @Schema(example = "Spring Security 3.1")
+    @NotBlank
+    private String content;
 }

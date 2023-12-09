@@ -1,7 +1,7 @@
 package com.proba.felo.rest;
 
 
-import com.proba.felo.service.BookService;
+import com.proba.felo.service.ArticleService;
 import com.proba.felo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PublicController {
 
     private final UserService userService;
-    private final BookService bookService;
+    private final ArticleService articleService;
 
     @GetMapping("/numberOfUsers")
     public Integer getNumberOfUsers() {
@@ -23,6 +23,6 @@ public class PublicController {
 
     @GetMapping("/numberOfBooks")
     public Integer getNumberOfBooks() {
-        return bookService.getBooks().size();
+        return articleService.getArticles().size();
     }
 }
