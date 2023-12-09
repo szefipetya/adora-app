@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "book")
+@Table(name = "article")
 public class Article {
     @Id
     private String isbn;
