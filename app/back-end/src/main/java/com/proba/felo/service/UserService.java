@@ -11,6 +11,8 @@ import com.proba.felo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -54,7 +56,7 @@ public class UserService {
         return savedUsers;
     }
 
-
+    @EventListener(ApplicationReadyEvent.class)
     public void testUsersEndpoint() throws JsonProcessingException {
         Integer usersSize = null;
         for (int i = 0; i < TEST_CALL_TIMES; i++) {
