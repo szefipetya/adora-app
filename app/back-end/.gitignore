@@ -36,4 +36,3 @@ build/
 db/
 .idea/
 spring.log
-*.log
