@@ -37,6 +37,7 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
+import Info from "layouts/info";
 import Hataridok from "layouts/hataridok";
 import Kalkulator from "layouts/kalkulator";
 import Hirek from "layouts/hirek";
@@ -72,6 +73,14 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/kalkulator",
     component: <Kalkulator />,
+  },
+  {
+    type: "collapse",
+    name: "Útmutató",
+    key: "info",
+    icon: <Icon fontSize="small">feed</Icon>,
+    route: "/info",
+    component: <Info />,
   },
   {
     type: "collapse",
