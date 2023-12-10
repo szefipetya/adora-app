@@ -1,5 +1,10 @@
 package com.proba.felo.model.mapper;
 
-public class UserMapper {
 
+import com.proba.felo.model.entity.User;
+import com.proba.felo.rest.dto.UserDto;
+
+public interface UserMapper {
+
+    UserDto toUserDto(User user);
 }

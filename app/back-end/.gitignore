@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Custom ###
+db/
+.idea/
+spring.log
+*.log

@@ -1,32 +1,37 @@
 package com.proba.felo.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(name = "_user", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username"),
+        @UniqueConstraint(columnNames = "email")
+})
 public class User {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String username;
+    private String password;
     private String name;
     private String email;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
-    private String phone;
-    private String website;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
-    private Company company;
-    @JsonIgnore
-    @OneToOne(mappedBy = "_user")
-    private IsEmailValid isEmailValid;
+    private String role;
+
+    public User(String username, String password, String name, String email, String role) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.role = role;
+    }
 }
