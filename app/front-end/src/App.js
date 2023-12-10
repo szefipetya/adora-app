@@ -45,6 +45,7 @@ import createCache from "@emotion/cache";
 
 // Material Dashboard 2 React routes
 import routes from "routes";
+import hidden_routes from "hidden_routes";
 
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
@@ -155,7 +156,7 @@ export default function App() {
             <Sidenav
               color={sidenavColor}
               brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-              brandName="Material Dashboard 2"
+              brandName="ADÓRA"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
@@ -168,6 +169,7 @@ export default function App() {
         <Routes>
           {getRoutes(routes)}
           <Route path="*" element={<Navigate to="/dashboard" />} />
+          {getRoutes(hidden_routes)}
         </Routes>
       </ThemeProvider>
     </CacheProvider>
@@ -179,7 +181,7 @@ export default function App() {
           <Sidenav
             color={sidenavColor}
             brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-            brandName="Material Dashboard 2"
+            brandName="ADÓRA"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
@@ -192,6 +194,7 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         <Route path="*" element={<Navigate to="/dashboard" />} />
+        {getRoutes(hidden_routes)}
       </Routes>
     </ThemeProvider>
   );

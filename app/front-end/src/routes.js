@@ -39,6 +39,7 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 import Billing from "layouts/billing";
+import Info from "layouts/info";
 import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
@@ -72,6 +73,14 @@ const routes = [
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
     component: <Billing />,
+  },
+  {
+    type: "collapse",
+    name: "Útmutató",
+    key: "info",
+    icon: <Icon fontSize="small">feed</Icon>,
+    route: "/info",
+    component: <Info />,
   },
   {
     type: "collapse",
