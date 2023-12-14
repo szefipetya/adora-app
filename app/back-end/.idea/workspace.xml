@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ccc092e-3d14-4028-bfc0-5e24522e1598" name="Changes" comment="Writing the README.md file.&#10;creating basic spring boot project" />
+    <list default="true" id="6ccc092e-3d14-4028-bfc0-5e24522e1598" name="Changes" comment="Writing the README.md file.&#10;creating basic spring boot project">
+      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/authentication/sign-in/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/authentication/sign-in/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,13 +153,6 @@
     <MESSAGE value="Writing the README.md file.&#10;- added the spring.log file for example output." />
     <MESSAGE value="Writing the README.md file.&#10;creating basic spring boot project" />
     <option name="LAST_COMMIT_MESSAGE" value="Writing the README.md file.&#10;creating basic spring boot project" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="isEmailValidRepository" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/felo$FeloApplication.ic" NAME="FeloApplication Coverage Results" MODIFIED="1648763892370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
