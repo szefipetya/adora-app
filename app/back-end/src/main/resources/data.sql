@@ -1,26 +1,26 @@
 INSERT INTO
-    images (fname)
+    images (id,fname)
 VALUES
-    ('ado_01.jpg'),
-    ('ado_02.jpg'),
-    ('jog_01.jpg'),
-    ('konyveles_01.jpg'),
-    ('konyveles_02.jpg');
+    (1,'ado_01.jpg'),
+    (2,'ado_02.jpg'),
+    (3,'jog_01.jpg'),
+    (4,'konyveles_01.jpg'),
+    (5,'konyveles_02.jpg');
 
 INSERT INTO
-    tags (caption)
+    tags (id,caption)
 VALUES
-    ('Adózás'),
-    ('Egyéni vállalkozó'),
-    ('Gazdaság'),
-    ('Hírek'),
-    ('Járulék'),
-    ('Szabályozás'),
-    ('Tartozáskezelés'),
-    ('Túlfizetési Lehetőségek'),
-    ('Ügyintézés'),
-    ('Vállalkozás'),
-    ('Változás');
+    (1,'Adózás'),
+    (2,'Egyéni vállalkozó'),
+    (3,'Gazdaság'),
+    (4,'Hírek'),
+    (5,'Járulék'),
+    (6,'Szabályozás'),
+    (7,'Tartozáskezelés'),
+    (8,'Túlfizetési Lehetőségek'),
+    (9,'Ügyintézés'),
+    (10,'Vállalkozás'),
+    (11,'Változás');
 
 INSERT INTO
     articles (fname, image_id)

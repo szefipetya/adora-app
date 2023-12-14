@@ -16,12 +16,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> getArticles() {
-        return articleRepository.findAllByOrderByTitle();
-    }
-
-    @Override
-    public List<Article> getArticlesContainingText(String text) {
-        return articleRepository.findByIsbnContainingOrTitleContainingIgnoreCaseOrderByTitle(text, text);
+        return articleRepository.findAllByOrderById();
     }
 
     @Override

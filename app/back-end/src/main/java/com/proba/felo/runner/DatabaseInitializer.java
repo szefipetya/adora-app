@@ -107,14 +107,14 @@ public class DatabaseInitializer implements CommandLineRunner {
             return;
         }
         USERS.forEach(userService::saveUser);
-        getArticles().forEach(articleService::saveArticle);
+        // getArticles().forEach(articleService::saveArticle);
         log.info("Database initialized");
     }
 
     private List<Article> getArticles() {
         return Arrays.stream(ARTICLES_STR.split("\n"))
                 .map(articleInfoStr -> articleInfoStr.split(";"))
-                .map(articleInfoArr -> new Article(articleInfoArr[0], articleInfoArr[1], articleInfoArr[2]))
+                .map(articleInfoArr -> new Article(1, "", null, null))
                 .collect(Collectors.toList());
     }
 }
