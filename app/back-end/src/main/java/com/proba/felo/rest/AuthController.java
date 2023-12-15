@@ -2,6 +2,7 @@ package com.proba.felo.rest;
 
 import com.proba.felo.exception.DuplicatedUserInfoException;
 import com.proba.felo.model.entity.User;
+import com.proba.felo.model.entity.Tag;
 import com.proba.felo.rest.dto.AuthResponse;
 import com.proba.felo.rest.dto.LoginRequest;
 import com.proba.felo.rest.dto.SignUpRequest;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -53,6 +55,7 @@ public class AuthController {
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
         user.setRole(WebSecurityConfig.USER);
+        user.setTagRelTags(new HashSet<Tag>());
         return user;
     }
 }

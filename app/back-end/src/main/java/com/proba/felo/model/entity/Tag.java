@@ -27,6 +27,10 @@ public class Tag {
     @ManyToMany(mappedBy = "tagRelTags")
         private Set<Article> tagRelArticles;
 
+    public Tag(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return this.getId().toString();

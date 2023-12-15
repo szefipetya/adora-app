@@ -2,6 +2,7 @@ package com.proba.felo.runner;
 
 
 import com.proba.felo.model.entity.Article;
+import com.proba.felo.model.entity.Tag;
 import com.proba.felo.model.entity.User;
 import com.proba.felo.security.WebSecurityConfig;
 import com.proba.felo.service.ArticleService;
@@ -12,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,8 +23,10 @@ import java.util.stream.Collectors;
 public class DatabaseInitializer implements CommandLineRunner {
 
     private static final List<User> USERS = Arrays.asList(
-            new User("admin", "admin", "Admin", "admin@mycompany.com", WebSecurityConfig.ADMIN),
-            new User("user", "user", "User", "user@mycompany.com", WebSecurityConfig.USER)
+            new User("admin", "admin", "Admin", "admin@mycompany.com", WebSecurityConfig.ADMIN,
+                    new HashSet<>(Arrays.asList(new Tag(1), new Tag(2)))),
+            new User("user", "user", "User", "user@mycompany.com", WebSecurityConfig.USER,
+                    new HashSet<>(Arrays.asList(new Tag(3), new Tag(2), new Tag(4))))
     );
     private static final String ARTICLES_STR =
             """
