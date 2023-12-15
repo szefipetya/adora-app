@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ccc092e-3d14-4028-bfc0-5e24522e1598" name="Changes" comment="Writing the README.md file.&#10;creating basic spring boot project" />
+    <list default="true" id="6ccc092e-3d14-4028-bfc0-5e24522e1598" name="Changes" comment="Writing the README.md file.&#10;creating basic spring boot project">
+      <change afterPath="$PROJECT_DIR$/../front-end/src/examples/Cards/BlogCards/ArticleCard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/hirek/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/hirek/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

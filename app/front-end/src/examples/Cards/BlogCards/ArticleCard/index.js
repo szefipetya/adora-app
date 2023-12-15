@@ -27,7 +27,6 @@ import MDButton from "components/MDButton";
 
 function ArticleCard({ image, title, description, action, badges }) {
   return (
-
     <Card>
       <MDBox position="relative" borderRadius="lg" mt={-3} mx={2}>
         <MDBox
