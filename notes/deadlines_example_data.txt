@@ -1,0 +1,71 @@
+ID
+Name
+Date
+Information
+************************************
+
+
+Általános forgalmi adó
+a Közösségen belüli értékesítéssel kapcsolatos szabályokba beépül az alanyi mentesség választásának lehetősége
+egyes műalkotásoknak az Európai Unión kívülről történő behozatalára 5 százalékos kedvezményes áfa-mértéket állapítottak meg
+18 százalékos áfa-kulcs alá kerültek a desszert jellegű sajtkészítmények, köztük a túrórudi is
+
+----
+Társasági adó
+
+kutatás-fejlesztési (K+F) adókedvezmény
+Harmincmillió euróra emelkedett az energiahatékonysági célú adókedvezmény, ám szigorodnak a feltételek(20 százalékkal kell javuljon az energiahatékonyság).
+
+
+----
+Személyi jövedelemadó, szociális hozzájárulási adó, társadalombiztosítási járulék
+
+Az Amerikai Egyesült Államok felmondta a hazánkkal a kettős adóztatás elkerülése érdekében kötött egyezményt, ennek kedvezőtlen jogkövetkezményeit ellensúlyozza azzal, hogy az értékpapírból és kamatból származó jövedelmekre nem kell alkalmazni az egyéb jövedelemre vonatkozó előírásokat, ha a jövedelem juttatója OECD-tagállamban (így például az USA-ban) székhellyel rendelkező személy.
+A kifizetőt terhelő adó az eddigi havi helyett negyedéves bevallású lesz
+Induló vállalkozások esetén nem minősül bevételnek, így adózni sem kell a munkavállaló, illetve a vezető tisztségviselő a vállalkozásban ingyenes vagy kedvezményes, tagsági jogot megtestesítő részesedése után, ha három évig megtartja azt.
+A magyar borkereskedelem fellendítésével indokolták, hogy adómentessé vált a reprezentációs és nem reprezentációs célú események keretében, illetve üzleti ajándékként vagy csekély értékű ajándékként nyújtott eredetvédett, palackozott borászati termék.
+Az előadói, művészeti és sporttevékenységekből származó jövedelem adóját a tevékenység végzésének helye szerinti államban kell megfizetni.
+Munkaerőpiacra lépők után igénybe vehető szociális hozzájárulási adókedvezmény szűkebb körben lesz érvényesíthető 2024-től: kizárólag már csak a magyar állampolgárok, illetve a Magyarországgal határos nem EGT-állam (így Szerbia és Ukrajna) polgárai után lehet igénybe venni.
+Adómentes lesz a számsorsolásos játékokon (mint például a lottó) elért nyeremény.
+A szociális hozzájárulási adó esetében legfeljebb a minimálbér kétszerese után lehet igénybe venni kedvezményt a doktori képzésben résztvevő foglalkoztatott esetén.
+
+
+----
+Kisvállalati adó (KIVA)
+
+Noha „kivételszabály” alapján, és szűk körben, de ezentúl lehetőségük lesz a kivás cégeknek is az átalakulásra – egyesülésre más társasággal, illetve szétválásra – anélkül, hogy kisvállalati adóalanyiságukat elveszítenék. Az eddigi rendelkezések szerint, ilyen esetekben kikerültek a KIVA hatálya alól, és azt két évig nem is választhatták újra.
+
+---
+Adózás rendjéről szóló törvény
+
+
+A jogalkotó módosította a nagy összegű adóhiánnyal és/vagy adótartozással rendelkező adózók közzétételére vonatkozó értékhatárt: jövőre egységesen 100 millió forint felett kerülhet sor a közzétételre. Ez a természetes személyeket érintően nagyléptékű változást jelent, hiszen eddig rájuk 10 millió forint értékhatár vonatkozott.
+Ezzel párhuzamosan, a helyi adózásban is egységes, és többszörösére emelt értékhatár érvényesül a közzétételre: 500 ezer forint. Összehasonlításként: eddig természetes személyek esetében 50 ezer, egyébként 100 ezer forint volt ez az összeghatár.
+
+
+------
+Ágazati különadókat érintő változások
+
+2024. január 1-jétől a távközlési vállalkozásokat érintően a közművezetékek adója tárgyi hatálya alól kikerülnek a hírközlési vezetékek, egyúttal 2025. január 1-jétől hatályát veszti a közművezetékek adójáról szóló törvény.
+A törvény további egy évvel meghosszabbítja a reklámadó felfüggesztésének határidejét.
+A kiskereskedelmi adó kapcsán húszszorosára növekszik az 500 millió forint forgalmat meghaladó, de 100 milliárd forint forgalmat el nem érő benzinkutak adóterhelése.
+
+-------
+
+Egyéb változások
+
+2024-től, ha a könyvvizsgáló cégnek könyvvizsgálói tevékenységre adnak megbízást, ezzel egyidejűleg a könyvvizsgálat végrehajtásáért személyében felelős könyvvizsgálót is meg kell választani.
+A bizalmi vagyonkezelés szabályai is jelentős, az adótervezés lehetőségét erősítő változáson estek át: a törvény a bemeneti oldal adózása helyett a kimeneti oldalt adóztatja, azt is csak bizonyos feltételek teljesülése esetén.
+A 2024-től induló, kötelező visszaváltási rendszerrel összefüggő számviteli elszámolást pontosította a jogalkotó: a kötelezően visszaváltási díjas, nem újrahasznosítható termékre a MOHU-val szembeni kötelezettséget (50 forint/db) nem az árukkal, hanem az egyéb ráfordításokkal szemben kell könyvelni.
+A jelenlegi literenként 3,5 forintról 10 forintra nő a kereskedelmi gázolaj jövedéki adójából visszaigényelhető összeg árufuvarozás és meghatározott kategóriájú személyszállítás esetén.
+
+
+-------
+Globális minimumadó
+
+2024 – és az utóbbi évek – egyik legjelentősebb adójogi változása a globális minimumadó szabályozás, amely mintegy 3 ezer vállalkozást érint és jelentős adminisztratív terhet ró rájuk.
+A kiegészítő adó alanyai azon vállalatcsoportok magyarországi tagjai lesznek, melyeknél a végső anyavállalat összevont (konszolidált) pénzügyi beszámolója szerinti éves bevétele legalább két egymást követő évben meghaladja a 750 millió eurót.
+Ezt az adót azoknak a társaságoknak kell majd megfizetniük, amelyek effektív magyarországi adókulcsa nem éri el az elvárt 15 százalékos minimumadót (az effektív adókulcs számításánál figyelembe kell venni a társasági adót, a helyi iparűzési adót, az energiaellátók jövedelemadóját, és az innovációs járulékot).
+A kiegészítő adó háromféle lehet: ha egy államban, az elismert adók figyelembe vételével a tényleges jövedelemadóztatás mértéke 15 százalék alatti, akkor az érintett állam elismert belföldi kiegészítő adót vethet ki és saját maga beszedi a különbözetet. Ha ilyen adót nem vezetnek be, akkor a vállalatcsoport végső anyavállalata köteles alkalmazni a jövedelem-hozzászámítási kiegészítő adót, és a végső anyavállalat szerinti tagállamban kell megfizetni a különbözetet. Ha a végső anyavállalat nem tudja beszedni a kiegészítő adó teljes összegét, akkor a maradványösszeget fel kell osztani a csoporttagok között - ismertette.
+A tényleges termelési tevékenységet jelentős létszámmal végző cégek viszont kedvezményeket kapnak.
+Az adó- és számviteli változásokat tematikus kiadványunkban részletesebben is – esettanulmányokkal, példákkal is magyarázva – bemutatjuk.
