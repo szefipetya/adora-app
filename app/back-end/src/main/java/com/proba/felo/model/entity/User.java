@@ -28,7 +28,7 @@ public class User {
     private String email;
     private String role;
     @ManyToMany
-    @JoinTable(name = "TagRel", joinColumns = @JoinColumn(name = "articleId"), inverseJoinColumns = @JoinColumn(name = "tagId"))
+    @JoinTable(name = "UserTag", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "tagId"))
     private Set<Tag> tagRelTags;
 
     public User(String username, String password, String name, String email, String role, Set<Tag> tags) {
