@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -112,6 +113,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         }
         USERS.forEach(userService::saveUser);
         // getArticles().forEach(articleService::saveArticle);
+        Optional<User> u = userService.getUserByUsername("admin");
         log.info("Database initialized");
     }
 

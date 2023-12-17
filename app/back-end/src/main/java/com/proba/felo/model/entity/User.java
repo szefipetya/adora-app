@@ -1,5 +1,6 @@
 package com.proba.felo.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,9 +28,13 @@ public class User {
     private String name;
     private String email;
     private String role;
+
     @ManyToMany
-    @JoinTable(name = "UserTag", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "tagId"))
-    private Set<Tag> tagRelTags;
+    @JoinTable(
+            name = "userTagRel",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "tagId"))
+    private Set<Tag> interestedTags;
 
     public User(String username, String password, String name, String email, String role, Set<Tag> tags) {
         this.username = username;
@@ -37,6 +42,6 @@ public class User {
         this.name = name;
         this.email = email;
         this.role = role;
-        this.tagRelTags = tags;
+        this.interestedTags = tags;
     }
 }

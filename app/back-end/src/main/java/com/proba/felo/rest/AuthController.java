@@ -55,7 +55,7 @@ public class AuthController {
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
         user.setRole(WebSecurityConfig.USER);
-        user.setTagRelTags(new HashSet<Tag>());
+        user.setInterestedTags(new HashSet<Tag>());
         return user;
     }
 }
