@@ -25,7 +25,15 @@ public class Tag {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "tagRelTags")
-        private Set<Article> tagRelArticles;
+    private Set<Article> tagRelArticles;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "interestedTags")
+    private Set<User> tagRelUsers;
+
+    public Tag(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {

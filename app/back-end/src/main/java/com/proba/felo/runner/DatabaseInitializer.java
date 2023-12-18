@@ -2,9 +2,11 @@ package com.proba.felo.runner;
 
 
 import com.proba.felo.model.entity.Article;
+import com.proba.felo.model.entity.Tag;
 import com.proba.felo.model.entity.User;
 import com.proba.felo.security.WebSecurityConfig;
 import com.proba.felo.service.ArticleService;
+import com.proba.felo.service.TagService;
 import com.proba.felo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +14,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -99,6 +103,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                     9781603094405;Ye;Lorem ipsum blah blah blah
                     """;
     private final UserService userService;
+    private final TagService tagService;
     private final ArticleService articleService;
 
     @Override
@@ -106,8 +111,14 @@ public class DatabaseInitializer implements CommandLineRunner {
         if (!userService.getUsers().isEmpty()) {
             return;
         }
+        List<Tag> tags = tagService.getTags();
+        USERS.get(0).setInterestedTags(
+                new HashSet<>(Arrays.asList(tagService.getTagById(1), tagService.getTagById(2))));
+        USERS.get(1).setInterestedTags(
+                new HashSet<>(Arrays.asList(tagService.getTagById(3), tagService.getTagById(4), tagService.getTagById(2))));
         USERS.forEach(userService::saveUser);
         // getArticles().forEach(articleService::saveArticle);
+        Optional<User> u = userService.getUserByUsername("admin");
         log.info("Database initialized");
     }
 
