@@ -13,10 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -120,6 +117,12 @@ public class DatabaseInitializer implements CommandLineRunner {
         // getArticles().forEach(articleService::saveArticle);
         Optional<User> u = userService.getUserByUsername("admin");
         log.info("Database initialized");
+
+
+        //for testing
+        Set<Article> u1articles = userService.getRelevantArticles(u.get());
+        Set<Article> u2articles = userService.getRelevantArticles(userService.getUserByUsername("user").get());
+        u2articles.isEmpty();
     }
 
     private List<Article> getArticles() {
