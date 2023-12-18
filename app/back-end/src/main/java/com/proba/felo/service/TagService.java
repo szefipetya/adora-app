@@ -1,28 +1,14 @@
 package com.proba.felo.service;
 
-
 import com.proba.felo.model.entity.Tag;
-import com.proba.felo.repository.TagRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor
-@Service
-public class TagService {
+public interface TagService {
 
-    private final TagRepository tagRepository;
+    List<Tag> getTags();
 
-    public List<Tag> getTags() {
-        return tagRepository.findAll();
-    }
+    Tag getTagById(Integer id);
 
-    public Tag getTagById(Integer id) {
-        return tagRepository.findOneById(id);
-    }
-
-    public Tag saveTag(Tag tag) {
-        return tagRepository.save(tag);
-    }
+    Tag saveTag(Tag tag);
 }

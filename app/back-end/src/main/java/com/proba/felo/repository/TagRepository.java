@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TagRepository extends JpaRepository<Tag, String> {
+public interface TagRepository extends JpaRepository<Tag, Integer> {
     List<Tag> findAllByOrderById();
 
     Tag findOneById(Integer Id);
