@@ -6,6 +6,7 @@ import com.proba.felo.model.entity.Tag;
 import com.proba.felo.model.entity.User;
 import com.proba.felo.security.WebSecurityConfig;
 import com.proba.felo.service.ArticleService;
+import com.proba.felo.service.TagService;
 import com.proba.felo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +25,8 @@ import java.util.stream.Collectors;
 public class DatabaseInitializer implements CommandLineRunner {
 
     private static final List<User> USERS = Arrays.asList(
-            new User("admin", "admin", "Admin", "admin@mycompany.com", WebSecurityConfig.ADMIN,
-                    new HashSet<>(Arrays.asList(new Tag(1), new Tag(2)))),
-            new User("user", "user", "User", "user@mycompany.com", WebSecurityConfig.USER,
-                    new HashSet<>(Arrays.asList(new Tag(3), new Tag(2), new Tag(4))))
+            new User("admin", "admin", "Admin", "admin@mycompany.com", WebSecurityConfig.ADMIN),
+            new User("user", "user", "User", "user@mycompany.com", WebSecurityConfig.USER)
     );
     private static final String ARTICLES_STR =
             """
@@ -104,6 +103,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                     9781603094405;Ye;Lorem ipsum blah blah blah
                     """;
     private final UserService userService;
+    private final TagService tagService;
     private final ArticleService articleService;
 
     @Override
@@ -111,6 +111,11 @@ public class DatabaseInitializer implements CommandLineRunner {
         if (!userService.getUsers().isEmpty()) {
             return;
         }
+        List<Tag> tags = tagService.getTags();
+        USERS.get(0).setInterestedTags(
+                new HashSet<>(Arrays.asList(tagService.getTagById(1), tagService.getTagById(2))));
+        USERS.get(1).setInterestedTags(
+                new HashSet<>(Arrays.asList(tagService.getTagById(3), tagService.getTagById(4), tagService.getTagById(2))));
         USERS.forEach(userService::saveUser);
         // getArticles().forEach(articleService::saveArticle);
         Optional<User> u = userService.getUserByUsername("admin");
