@@ -1,18 +1,20 @@
 package com.proba.felo.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "_user", uniqueConstraints = {
+@Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
@@ -26,6 +28,13 @@ public class User {
     private String name;
     private String email;
     private String role;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "userTagRel",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "tagId"))
+    private Set<Tag> interestedTags;
 
     public User(String username, String password, String name, String email, String role) {
         this.username = username;

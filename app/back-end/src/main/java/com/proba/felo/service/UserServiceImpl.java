@@ -2,7 +2,9 @@ package com.proba.felo.service;
 
 
 import com.proba.felo.exception.UserNotFoundException;
+import com.proba.felo.model.entity.Article;
 import com.proba.felo.model.entity.User;
+import com.proba.felo.repository.ArticleRepository;
 import com.proba.felo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,12 +12,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final ArticleRepository articleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -59,5 +64,13 @@ public class UserServiceImpl implements UserService {
     public Optional<User> validUsernameAndPassword(String username, String password) {
         return getUserByUsername(username)
                 .filter(user -> passwordEncoder.matches(password, user.getPassword()));
+    }
+
+    @Override
+    public Set<Article> getRelevantArticles(User user){
+        return user.getInterestedTags().stream()
+                .map(articleRepository::findAllByTagRelTags)
+                .flatMap(List::stream)
+                .collect(Collectors.toSet());
     }
 }

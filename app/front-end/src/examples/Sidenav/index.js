@@ -16,15 +16,14 @@ Coded by www.creative-tim.com
 import { useEffect } from "react";
 
 // react-router-dom components
-import { useLocation, NavLink } from "react-router-dom";
-
+import { useLocation, NavLink, redirect } from "react-router-dom";
+import { Link } from 'react-router-dom'
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
 
 // @mui material components
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
@@ -38,6 +37,7 @@ import SidenavCollapse from "examples/Sidenav/SidenavCollapse";
 // Custom styles for the Sidenav
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
 import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
+import { useAuth } from "layouts/authentication/context/AuthContext";
 
 // Material Dashboard 2 React context
 import {
@@ -48,6 +48,7 @@ import {
 } from "context";
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
+  const { getUser, userIsAuthenticated, userLogout } = useAuth()
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
   const location = useLocation();
@@ -62,6 +63,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   }
 
   const closeSidenav = () => setMiniSidenav(dispatch, true);
+ 
 
   useEffect(() => {
     // A function that sets the mini state of the sidenav.
@@ -83,10 +85,13 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     return () => window.removeEventListener("resize", handleMiniSidenav);
   }, [dispatch, location]);
 
+  const renderExcludedRouteKeys=["sign-in","sign-up"];
+  const authenticatedRouteKeys=["profile"]
   // Render all the routes from the routes.js (All the visible items on the Sidenav)
   const renderRoutes = routes.map(({ type, name, icon, title, noCollapse, key, href, route }) => {
     let returnValue;
-
+    if(renderExcludedRouteKeys.includes(key)) return "";
+    if(!userIsAuthenticated()&&authenticatedRouteKeys.includes(key)) return "";
     if (type === "collapse") {
       returnValue = href ? (
         <Link
@@ -178,20 +183,57 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           (darkMode && !transparentSidenav && whiteSidenav)
         }
       />
-      <List>{renderRoutes}</List>
+
+
+      {userIsAuthenticated() &&
+        <MDBox pt={1} pb={3} px={4} textAlign="center">
+        <MDBox
+          display={{ xs: "block", xl: "none" }}
+          position="absolute"
+          top={0}
+          right={0}
+          p={1.625}
+          onClick={closeSidenav}
+          sx={{ cursor: "pointer" }}
+        >
+          <MDTypography variant="h2" color="secondary">
+            <Icon sx={{ fontWeight: "bold" }}>close</Icon>
+          </MDTypography>
+        </MDBox>
+        <MDBox component={NavLink} to="/" display="flex" alignItems="center">
+          <MDBox
+            width={!brandName && "100%"}
+            sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
+          >
+            <MDTypography component="h2" variant="button" fontWeight="normal" color={textColor}>
+              Welcome back, <strong>{getUser().name}</strong> !
+            </MDTypography>
+          </MDBox>
+        </MDBox>
+      </MDBox>
+        }
+        
+        <List>{renderRoutes}</List>
+      
+      
       <MDBox p={2} mt="auto">
         <MDButton
-          component="a"
-          href="https://www.creative-tim.com/product/material-dashboard-pro-react"
-          target="_blank"
           rel="noreferrer"
           variant="gradient"
           color={sidenavColor}
           fullWidth
-        >
-          upgrade to pro
+          onClick={userLogout}
+          component={Link} 
+          to='/authentication/sign-in'
+        >  
+          {userIsAuthenticated() &&
+           <a> Log out </a>}
+          {!userIsAuthenticated() &&
+          <a> Sign In </a>}
         </MDButton>
       </MDBox>
+      
+      
     </SidenavRoot>
   );
 }

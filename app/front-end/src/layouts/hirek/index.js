@@ -48,11 +48,9 @@ function Hirek() {
             <Grid item>
               <MDBox>
                 <Grid item>
-
                   <Link to={"/hirek"}>
                     <MDButton color="primary">{"Vissza"}</MDButton>
                   </Link>
-
                 </Grid>
                 <Card>
                   <MDBox position="relative" borderRadius="lg" mt={3}>

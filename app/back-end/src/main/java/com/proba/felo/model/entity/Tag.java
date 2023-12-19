@@ -1,39 +1,39 @@
 package com.proba.felo.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
-@EqualsAndHashCode
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "articles")
-public class Article {
+@Table(name = "tags")
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false)
-    private String fname;
+    private String caption;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "image_id")
-    @JsonBackReference
-    private Image image;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "tagRelTags")
+    private Set<Article> tagRelArticles;
 
-    @ManyToMany
-    @JoinTable(name = "TagRel", joinColumns = @JoinColumn(name = "articleId"), inverseJoinColumns = @JoinColumn(name = "tagId"))
-    private Set<Tag> tagRelTags;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "interestedTags")
+    private Set<User> tagRelUsers;
+
+    public Tag(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
@@ -44,12 +44,12 @@ public class Article {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Article article = (Article) o;
-        return id.equals(article.id) && Objects.equals(fname, article.fname);
+        Tag tag = (Tag) o;
+        return id.equals(tag.id) && Objects.equals(caption, tag.caption);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fname);
+        return Objects.hash(id, caption);
     }
 }
