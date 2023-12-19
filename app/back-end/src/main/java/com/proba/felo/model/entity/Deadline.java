@@ -19,7 +19,7 @@ import java.util.UUID;
 @Table(name = "deadline")
 public class Deadline {
     @JsonProperty("id")
-    private UUID id;
+    private Integer id;
 
     @JsonProperty("name")
     private String name;
