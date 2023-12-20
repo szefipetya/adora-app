@@ -128,7 +128,7 @@ public class DatabaseInitializer implements CommandLineRunner {
     private List<Article> getArticles() {
         return Arrays.stream(ARTICLES_STR.split("\n"))
                 .map(articleInfoStr -> articleInfoStr.split(";"))
-                .map(articleInfoArr -> new Article(1, "", null, null))
+                .map(articleInfoArr -> new Article(1,"test", "test.txt", new Date(), null, null))
                 .collect(Collectors.toList());
     }
 }
