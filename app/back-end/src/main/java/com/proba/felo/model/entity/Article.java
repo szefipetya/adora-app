@@ -32,7 +32,7 @@ public class Article {
     @Column(nullable = false)
     private Date dateOfUpload;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     @JsonBackReference
     private Image image;

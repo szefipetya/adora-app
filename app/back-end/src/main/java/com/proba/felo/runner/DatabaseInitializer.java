@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
 public class DatabaseInitializer implements CommandLineRunner {
 
     private static final List<User> USERS = Arrays.asList(
-            new User("admin", "admin", "Admin", "admin@mycompany.com", WebSecurityConfig.ADMIN),
-            new User("user", "user", "User", "user@mycompany.com", WebSecurityConfig.USER)
+            new User("admin", "admin", "Admin", "habzdafruzsina@gmail.com", WebSecurityConfig.ADMIN)//,
+            //new User("user", "user", "User", "habzdafruzsina@gmail.com", WebSecurityConfig.USER)
     );
     private static final String ARTICLES_STR =
             """
@@ -111,8 +111,8 @@ public class DatabaseInitializer implements CommandLineRunner {
         List<Tag> tags = tagService.getTags();
         USERS.get(0).setInterestedTags(
                 new HashSet<>(Arrays.asList(tagService.getTagById(1), tagService.getTagById(2))));
-        USERS.get(1).setInterestedTags(
-                new HashSet<>(Arrays.asList(tagService.getTagById(3), tagService.getTagById(4), tagService.getTagById(2))));
+        //USERS.get(1).setInterestedTags(
+        //        new HashSet<>(Arrays.asList(tagService.getTagById(3), tagService.getTagById(4), tagService.getTagById(2))));
         USERS.forEach(userService::saveUser);
         // getArticles().forEach(articleService::saveArticle);
         Optional<User> u = userService.getUserByUsername("admin");
@@ -121,8 +121,8 @@ public class DatabaseInitializer implements CommandLineRunner {
 
         //for testing
         Set<Article> u1articles = userService.getRelevantArticles(u.get());
-        Set<Article> u2articles = userService.getRelevantArticles(userService.getUserByUsername("user").get());
-        u2articles.isEmpty();
+        //Set<Article> u2articles = userService.getRelevantArticles(userService.getUserByUsername("user").get());
+        //u2articles.isEmpty();
     }
 
     private List<Article> getArticles() {
