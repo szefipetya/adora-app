@@ -27,4 +27,6 @@ public interface UserService {
     Optional<User> validUsernameAndPassword(String username, String password);
 
     Set<Article> getRelevantArticles(User user);
+
+    Set<Article> getRelevantArticlesWithinAWeek(User user);
 }

@@ -1,13 +1,13 @@
 package com.proba.felo.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,9 +24,15 @@ public class Article {
     private Integer id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private String fname;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(nullable = false)
+    private Date dateOfUpload;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     @JsonBackReference
     private Image image;
@@ -45,7 +51,7 @@ public class Article {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Article article = (Article) o;
-        return id.equals(article.id) && Objects.equals(fname, article.fname);
+        return id.equals(article.id) && title.equals(article.title) && Objects.equals(fname, article.fname);
     }
 
     @Override
