@@ -1,6 +1,7 @@
 package com.proba.felo.service;
 
 import com.proba.felo.model.entity.Article;
+import com.proba.felo.model.entity.Deadline;
 import com.proba.felo.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Slf4j
 @Service
@@ -30,9 +30,12 @@ public class MailSenderService {
     private Environment env;
     @Autowired
     private UserService userService;
+    @Autowired
+    private DeadlineService deadlineService;
 
     private final String FIXED_RECEIVER_EMAIL = "test@emailservice.com";
     private final String WEEKLY_NEWS_EMAIL_SUBJECT = "Aktuális adora hírek";
+    private final String DEADLINE_EMAIL_SUBJECT = "ADÓRA figyelmeztetés; közelgő határidők!";
 
 
     public void sendTestMessage(String to) {
@@ -76,7 +79,7 @@ public class MailSenderService {
                     sb.append("<html> <h2>Az eheti cikkeink, melyek érdekelhetnek:</h2>");
                     for(Article article : userService.getRelevantArticlesWithinAWeek(user)){
                         MimeBodyPart imagePart = new MimeBodyPart();
-                        sb.append("<a href=\"\"><h4>"+ article.getTitle() + "</h4>") //TODO a href link
+                        sb.append("<a href=\"\"><h4>").append(article.getTitle()).append("</h4>") //TODO a href link
                                 .append("<img src=\"cid:")
                                 .append(article.getImage().getFname())
                                 .append("\" width=\"30%\" height=\"30%\" /></a><br>");
@@ -102,6 +105,44 @@ public class MailSenderService {
                 } catch(MessagingException | IOException e){
                     log.error(e.getMessage());
                 }
+            }
+        } catch(AddressException ae){
+            log.error(ae.getMessage());
+        }
+    }
+
+    @Scheduled(cron = "0 0 */2 * *") //every 2 days
+    @Async
+    public void sendDeadlineEmailsToUsers(){
+        try {
+            InternetAddress senderEmail = new InternetAddress(Objects.requireNonNull(env.getProperty("spring.mail.from.email")));
+            try {
+                MimeMessage message = emailSender.createMimeMessage();
+                message.setSender(senderEmail);
+                message.setFrom(senderEmail);
+                message.setSubject(DEADLINE_EMAIL_SUBJECT);
+
+                StringBuilder sb = new StringBuilder();
+                sb.append("<html> <h2>Emlékeztető</h2><h3>Egy héten belüli határidők:</h3><br>");
+                for(Deadline deadline : deadlineService.getDeadlinesWithXDays(7)){
+                    sb.append("<h5>").append(deadline.getInformation()).append(":</h5>")
+                            .append("<h4>").append(deadline.getDate()).append(":</h4><br><br>");
+                }
+                sb.append("</html>");
+
+                MimeBodyPart textBodyPart = new MimeBodyPart();
+                textBodyPart.setContent(sb.toString(), "text/html; charset=utf-8");
+                Multipart multipart = new MimeMultipart();
+                multipart.addBodyPart(textBodyPart);
+                message.setContent(multipart);
+
+                List<User> users = userService.getUsers();
+                for (User user : users) {
+                    message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(user.getEmail()));
+                    emailSender.send(message);
+                }
+            } catch(MessagingException e){
+                log.error(e.getMessage());
             }
         } catch(AddressException ae){
             log.error(ae.getMessage());
