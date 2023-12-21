@@ -2,12 +2,16 @@ package com.proba.felo.service;
 
 import com.proba.felo.model.entity.Deadline;
 import com.proba.felo.repository.DeadlineRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.security.Timestamp;
 import java.util.List;
 
+@RequiredArgsConstructor
+@Service
 public class DeadlineServiceImpl implements DeadlineService{
-    private DeadlineRepository deadlineRepository;
+    private final DeadlineRepository deadlineRepository;
     @Override
     public List<Deadline> getDeadlines() {
         return deadlineRepository.findAllByOrderById();

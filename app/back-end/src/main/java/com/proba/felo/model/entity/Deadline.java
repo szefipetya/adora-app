@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +16,8 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "deadline")
 public class Deadline {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")
     private Integer id;
 
