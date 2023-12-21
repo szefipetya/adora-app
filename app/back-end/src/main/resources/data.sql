@@ -23,13 +23,13 @@ VALUES
     (11,'Változás');
 
 INSERT INTO
-    articles (fname, image_id)
+    articles (title, fname, date_of_upload, image_id)
 VALUES
-    ('001.md', 1),
-    ('002.md', 2),
-    ('003.md', 3),
-    ('005.md', 4),
-    ('004.md', 5);
+    ('Izgalmak az Adószámlák Körül: Kétmillió Magyar Várja Az Értesítést','001.md', CURRENT_DATE, 1),
+    ('A Parlament Tárgyalja az Új Adócsomagot: Milyen Változások Várhatók az Egyéni Vállalkozók Számára?','002.md', CURRENT_DATE, 2),
+    ('Egyéni Vállalkozók Száma Tovább Nő: Könnyűszerrel Váltogatható és Rugalmas Forma a Cégekkel Szemben', '003.md', CURRENT_DATE, 3),
+    ('Adózási Egyszerűsítés: Átfogó Javaslat a Jövedelemadó- és Járulékszabályok Módosítására', '005.md', CURRENT_DATE, 4),
+    ('Átalakul a Mellékállású Egyéni Vállalkozók Járulékfizetése: Törlésre Került a Kormányjavaslatból', '004.md', CURRENT_DATE, 5);
 
 INSERT INTO
     tag_rel (article_id, tag_id)
@@ -49,3 +49,11 @@ VALUES
     (5, 7),
     (5, 8),
     (5, 10);
+
+INSERT INTO
+    deadlines (id, name,date,information)
+VALUES
+    (1, 'Általános forgalmi adó','2023-12-01 12:00:00','A Közösségen belüli értékesítéssel kapcsolatos szabályokba beépül az alanyi mentesség választásának lehetősége'),
+    (2, 'Általános forgalmi adó','2023-12-25 12:00:00','Egyes műalkotásoknak az Európai Unión kívülről történő behozatalára 5 százalékos kedvezményes áfa-mértéket állapítottak meg'),
+    (3, 'Általános forgalmi adó','2023-12-27 12:00:00','18 százalékos áfa-kulcs alá kerültek a desszert jellegű sajtkészítmények, köztük a túrórudi is'),
+    (4, 'Általános forgalmi adó','2023-12-30 12:00:00','teszt4');

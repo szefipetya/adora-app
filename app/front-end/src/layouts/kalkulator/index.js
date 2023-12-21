@@ -29,6 +29,7 @@ import PropTypes from "prop-types"
 import { calculateAtalany, calculateVSZJA, calculateKATA } from "./components/calculator";
 import MDInput from "components/MDInput";
 
+
 import "./calculator.css";
 
 function VSZJA({visible}) {
@@ -89,6 +90,7 @@ function VSZJA({visible}) {
           <span>{dividentTax}</span>
           <span>{VSZJASocialContributionTax}</span>
           <span>{totalVSZJATax}</span>
+
         </div>
       </div>
     );
@@ -101,7 +103,6 @@ VSZJA.propTypes = {
 }
 
 function Atalany({visible}) {
-
   const workType = useRef(null);
   const hasQualification = useRef(null);
   const costRatio = useRef(null);
@@ -224,7 +225,6 @@ Atalany.propTypes = {
   visible: PropTypes.bool
 }
 
-
 function KATA({visible}) {
 
   const kataMonths = useRef(null);
@@ -240,7 +240,6 @@ function KATA({visible}) {
       pausedMonths.current.children[0].children[0].value,
       higherPayOption.current.checked,
       partTime.current.checked );
-    
     setTotalKATATax(result + " Ft");
   }
 

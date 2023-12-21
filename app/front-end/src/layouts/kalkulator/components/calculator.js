@@ -17,9 +17,9 @@ const calculateVSZJA = (income, costs, entrepreneurialPay) => {
     }
 }
 
-const calculateAtalany = (workType, hasQualification, costRatio, income, below25TaxCut, below30MotherTaxCut, personalTaxCut, firstMarriageTaxCut, NETAK) => {
+
+const calculateAtalany = (workType, hasQualification, costRatio, income, below25TaxCut, below30MotherTaxCut, personalTaxCut, firstMarriageTaxCut, NETAK, disabledTaxCut) => {
     let costFlatRate = income * costRatio;
-    console.log(costFlatRate);
     let minSocialContributionTax;
     let minSocialSecurityTax;
 
@@ -30,9 +30,6 @@ const calculateAtalany = (workType, hasQualification, costRatio, income, below25
         minSocialSecurityTax = 12 * minUnqualifiedWage * 0.185;
         minSocialContributionTax = 12 * minUnqualifiedWage * 1.125 * 0.13;
     }
-
-    console.log(minSocialSecurityTax);
-    console.log(minSocialContributionTax);
 
     let socialSecurityTax;
     let socialContributionTax;
