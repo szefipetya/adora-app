@@ -51,13 +51,11 @@ public class MailSenderService {
     public void sendTestMessageScheduled() {
         sendTestMessage(this.FIXED_RECEIVER_EMAIL);
     }
-    @Scheduled(
-            fixedRate = 100000,
-            initialDelay = 3000
-    )
+
+    @Scheduled(cron = "0 0 0 ? * FRI")
     @Async
     public void sendArticleEmailsToUsers(){
-        try{
+        try {
             InternetAddress senderEmail = new InternetAddress(Objects.requireNonNull(env.getProperty("spring.mail.from.email")));
             List<User> users = userService.getUsers();
             for (User user : users) {
@@ -68,10 +66,11 @@ public class MailSenderService {
                     message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(user.getEmail()));
                     message.setSubject(WEEKLY_NEWS_EMAIL_SUBJECT);
 
-                    MimeBodyPart imagePart = new MimeBodyPart();
+                    Multipart multipart = new MimeMultipart();
                     StringBuilder sb = new StringBuilder();
                     sb.append("<html> <h2>Az eheti cikkeink, melyek érdekelhetnek:</h2>");
                     for(Article article : userService.getRelevantArticles(user)){
+                        MimeBodyPart imagePart = new MimeBodyPart();
                         sb.append("<a href=\"\"><h4>"+ article.getTitle() + "</h4>") //TODO a href link
                                 .append("<img src=\"cid:")
                                 .append(article.getImage().getFname())
@@ -85,41 +84,22 @@ public class MailSenderService {
                         } else {
                             imagePart.attachFile(imageResource.getFile());
                         }
+                        multipart.addBodyPart(imagePart);
                     }
                     sb.append("</html>");
 
                     MimeBodyPart textBodyPart = new MimeBodyPart();
                     textBodyPart.setContent(sb.toString(), "text/html; charset=utf-8");
-
-                    Multipart multipart = new MimeMultipart();
                     multipart.addBodyPart(textBodyPart);
-                    multipart.addBodyPart(imagePart);
 
                     message.setContent(multipart);
                     emailSender.send(message);
-                }catch(MessagingException me){
-                    log.error("");
-                }
-                catch(IOException ioe){
-                    log.error(ioe.getMessage());
+                } catch(MessagingException | IOException e){
+                    log.error(e.getMessage());
                 }
             }
-        }catch(AddressException ae){
-
+        } catch(AddressException ae){
+            log.error(ae.getMessage());
         }
-    }
-
-    private String composeArticleEmailContent(Set<Article> articles){
-        /*try{
-
-        }
-        catch (MessagingException me) {
-
-        }
-        catch (IOException ioe){
-
-        }*/
-
-        return "";
     }
 }
