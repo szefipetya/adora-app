@@ -1,0 +1,84 @@
+.calculator-div {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container-div {
+    display: flex;
+    justify-content: center;
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+}
+
+.input-div.checkbox-div input {
+    height: 1.5rem;
+}
+
+.input-div.dropdown-div select {
+    font: inherit;
+    letter-spacing: inherit;
+    color: currentColor;
+    padding: 4px 0 5px;
+    border: 1px solid #d2d6da;
+    border-radius: 0.5rem;
+    box-sizing: content-box;
+    background: none;
+    background-color: rgba(0, 0, 0, 0);
+    height: 1.4375em;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    -webkit-animation-name: mui-auto-fill-cancel;
+    animation-name: mui-auto-fill-cancel;
+    -webkit-animation-duration: 10ms;
+    animation-duration: 10ms;
+    padding: 16.5px 14px;
+    color: #495057;
+    padding: 0.75rem;
+    background-color: transparent;
+}
+
+.calculate-button {
+    width: fit-content;
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.VSZJA-result-div, .atalany-result-div, .KATA-result-div {
+    width: 100%;
+    display: grid;
+}
+
+.VSZJA-result-div {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.atalany-result-div {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.KATA-result-div {
+    grid-template-columns: 1fr;
+}
+
+.VSZJA-result-div span,
+.atalany-result-div span,
+.KATA-result-div span {
+    text-align: center;
+    width: 100%;
+}
+
+.checkbox-span {
+    height: 2rem;
+}

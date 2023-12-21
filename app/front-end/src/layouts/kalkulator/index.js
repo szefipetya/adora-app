@@ -15,16 +15,10 @@ Coded by www.creative-tim.com
 
 import { useEffect, useState, useRef } from "react";
 
-// @mui material components
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDAlert from "components/MDAlert";
 import MDButton from "components/MDButton";
-import MDSnackbar from "components/MDSnackbar";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -35,52 +29,18 @@ import PropTypes from "prop-types"
 import { calculateAtalany, calculateVSZJA, calculateKATA } from "./components/calculator";
 import MDInput from "components/MDInput";
 
-const calculatorDivStyle = {
-  width: "100%",
-  marginTop: "1rem",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center"
-}
+import "./calculator.css";
 
-const inputContainerDivStlye = {
-  display: "flex",
-  justifyContent: "center"
-}
-
-const inputDivStyle = {
-  display: "flex",
-  flexDirection: "column",
-  marginLeft: "2rem",
-  marginRight: "2rem"
-}
-
-const calculateButtonStyle = {
-  width: "fit-content",
-  marginTop: "1rem",
-  marginBottom: "2rem"
-}
-
-const resultSpanStyle = {
-  textAlign: "center",
-  width: "100%"
-}
 function VSZJA({visible}) {
-
-  const resultDivStyle = {
-    width: "100%",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr 1fr"
-  }
 
   const incomeInput = useRef(null);
   const costsInput = useRef(null);
   const entreprenurialPayInput = useRef(null);
-  
+
   const [entrepreneurialTax, setEntrepreneurialTax] = useState("");
   const [dividentTax, setDividentTax] = useState("");
-  const [socialTax, setSocialTax] = useState("");
-  const [totalTax, setTotalTax] = useState("");
+  const [VSZJASocialContributionTax, setVSZJASocialContributionTax] = useState("");
+  const [totalVSZJATax, setTotalVSZJATax] = useState("");
 
   const calculate = () => {
     const result = calculateVSZJA(
@@ -89,37 +49,46 @@ function VSZJA({visible}) {
       entreprenurialPayInput.current.children[0].children[0].value);
     setEntrepreneurialTax(result.entrepreneurialTax + " Ft");
     setDividentTax(result.dividentTax + " Ft");
-    setSocialTax(result.socialTax + " Ft");
-    setTotalTax(result.totalTax + " Ft");
+    setVSZJASocialContributionTax(result.socialTax + " Ft");
+    setTotalVSZJATax(result.totalTax + " Ft");
   }
+
+  useEffect(() => {
+    if(!visible){
+      setEntrepreneurialTax("");
+      setDividentTax("");
+      setVSZJASocialContributionTax("");
+      setTotalVSZJATax("");
+    }
+  });
 
   if(visible){
     return(
-      <div style={calculatorDivStyle}>
-        <div style={inputContainerDivStlye}>
-          <div style={inputDivStyle}>
+      <div className="calculator-div">
+        <div  className="input-container-div">
+          <div className="input-div">
             <label>Bevétel</label>
             <MDInput ref={incomeInput}/>
           </div>
-          <div style={inputDivStyle}>
+          <div className="input-div">
             <label>Kiadások</label>
             <MDInput ref={costsInput}/>
           </div>
-          <div style={inputDivStyle}>
+          <div className="input-div">
             <label>Vállalkozói Kivét</label>
             <MDInput ref={entreprenurialPayInput}/>
           </div>
         </div>
-        <MDButton style={calculateButtonStyle} onClick={calculate}>Kiszámol</MDButton>
-        <div style={resultDivStyle} >
-          <span style={resultSpanStyle} >Vállalkozói Jövedelemadó</span>
-          <span style={resultSpanStyle} >Osztalékadó</span>
-          <span style={resultSpanStyle} >SZOCHO. Adó</span>
-          <span style={resultSpanStyle} >Teljes Fizetett Adóösszeg</span>
-          <span style={resultSpanStyle} >{entrepreneurialTax}</span>
-          <span style={resultSpanStyle} >{dividentTax}</span>
-          <span style={resultSpanStyle} >{socialTax}</span>
-          <span style={resultSpanStyle} >{totalTax}</span>
+        <MDButton className="calculate-button" onClick={calculate}>Kiszámol</MDButton>
+        <div className="VSZJA-result-div" >
+          <span>Vállalkozói Jövedelemadó</span>
+          <span>Osztalékadó</span>
+          <span>SZOCHO. Adó</span>
+          <span>Teljes Fizetett Adóösszeg</span>
+          <span>{entrepreneurialTax}</span>
+          <span>{dividentTax}</span>
+          <span>{VSZJASocialContributionTax}</span>
+          <span>{totalVSZJATax}</span>
         </div>
       </div>
     );
@@ -132,16 +101,119 @@ VSZJA.propTypes = {
 }
 
 function Atalany({visible}) {
-  const inputRef = useRef(null);
+
+  const workType = useRef(null);
+  const hasQualification = useRef(null);
+  const costRatio = useRef(null);
+  const income = useRef(null);
+  const below25TaxCut = useRef(null);
+  const below30MotherTaxCut = useRef(null);
+  const personalTaxCut = useRef(null);
+  const firstMarriageTaxCut = useRef(null);
+  const NETAK = useRef(null);
+
+  const [socialSecurityTax, setSocialSecurityTax] = useState("");
+  const [atalanySocialContributionTax, setAtalanySocialContributionTax] = useState("");
+  const [personalIncomeTax, setPersonalIncomeTax] = useState("");
+  const [localBusinessTax, setLocalBusinessTax] = useState("");
+  const [totalAtalanyTax, setTotalAtalanyTax] = useState("");
 
   const calculate = () => {
-    
+    const result = calculateAtalany(
+      workType.current.value,
+      hasQualification.current.checked,
+      costRatio.current.value,
+      income.current.children[0].children[0].value,
+      below25TaxCut.current.checked,
+      below30MotherTaxCut.current.checked,
+      personalTaxCut.current.checked,
+      firstMarriageTaxCut.current.checked,
+      NETAK.current.checked
+    );
+
+    setSocialSecurityTax(result.socialSecurityTax + " Ft");
+    setAtalanySocialContributionTax(result.socialContributionTax + " Ft");
+    setPersonalIncomeTax(result.personalIncomeTax + " Ft");
+    setLocalBusinessTax(result.localBusinessTax + " Ft");
+    setTotalAtalanyTax(result.totalTax + " Ft");
   }
+
+  useEffect(() => {
+    if(!visible){
+      setSocialSecurityTax("");
+      setAtalanySocialContributionTax("");
+      setPersonalIncomeTax("");
+      setLocalBusinessTax("");
+      setTotalAtalanyTax("");
+    }
+  });
 
   if(visible){
     return(
-      <div>
-        
+      <div className="calculator-div">
+        <div className="input-container-div">
+          <div>
+            <div className="input-div dropdown-div">
+              <label>Munkavégzés Típusa</label>
+              <select ref={workType}>
+                <option value="fulltime">Teljes Munkaidő</option>
+                <option value="parttime">Részmunkaidő</option>
+                <option value="retired">Nyugdíjazott</option>
+              </select>
+            </div>
+            <div className="input-div checkbox-div">
+              <label>Igényel-e Szakképesítést a Végzett Munka</label>
+              <input type="checkbox" ref={hasQualification}/>
+            </div>
+            <div className="input-div dropdown-div">
+              <label>Költséghányad Levonásának Mérete</label>
+              <select ref={costRatio}>
+                <option value="0.4">40%</option>
+                <option value="0.8">80%</option>
+                <option value="0.9">90%</option>
+              </select>
+            </div>
+            <div className="input-div">
+              <label>Bevétel</label>
+              <MDInput ref={income}/>
+            </div>
+          </div>
+          <div>
+            <div className="input-div checkbox-div">
+              <label>25 Év Alattiak Kedvezménye</label>
+              <input type="checkbox" ref={below25TaxCut}/>
+            </div>
+            <div className="input-div checkbox-div">
+            <label>30 Év Alatti Anyák Kedvezménye</label>
+              <input type="checkbox" ref={below30MotherTaxCut}/>
+            </div>
+            <div className="input-div checkbox-div">
+              <label>Személyi Kedvezmény</label>
+              <input type="checkbox" ref={personalTaxCut}/>
+            </div>
+            <div className="input-div checkbox-div">
+              <label>Első Házasok Kedvezménye</label>
+              <input type="checkbox" ref={firstMarriageTaxCut}/>
+            </div>
+            <div className="input-div checkbox-div">
+              <label>NÉTAK</label>
+              <input type="checkbox" ref={NETAK}/>
+            </div>
+          </div>
+        </div>
+        <MDButton className="calculate-button" onClick={calculate}>Kiszámol</MDButton>
+        <div className="atalany-result-div" >
+          <span>TB Adó</span>
+          <span>SZOCHO. Adó</span>
+          <span>Személyi Jövedelm Adó</span>
+          <span>Helyi Iparűzési Adó</span>
+          <span>Teljes Fizetett Adóösszeg</span>
+          <span>{socialSecurityTax}</span>
+          <span>{atalanySocialContributionTax}</span>
+          <span>{personalIncomeTax}</span>
+          <span>{localBusinessTax}</span>
+          <span>{totalAtalanyTax}</span>
+        </div>
       </div>
     );
   }
@@ -152,56 +224,51 @@ Atalany.propTypes = {
   visible: PropTypes.bool
 }
 
-function KATA({visible}) {
 
-  const resultDivStyle = {
-    width: "100%",
-    display: "grid",
-    gridTemplateColumns: "1fr"
-  }
+function KATA({visible}) {
 
   const kataMonths = useRef(null);
   const pausedMonths = useRef(null);
   const higherPayOption = useRef(null);
   const partTime = useRef(null);
 
-  const [totalTax, setTotalTax] = useState("");
+  const [totalKATATax, setTotalKATATax] = useState("");
 
   const calculate = () => {
     const result = calculateKATA(
       kataMonths.current.children[0].children[0].value, 
       pausedMonths.current.children[0].children[0].value,
-      higherPayOption.current.children[0].children[0].checked,
-      partTime.current.children[0].children[0].checked );
+      higherPayOption.current.checked,
+      partTime.current.checked );
     
-    setTotalTax(result + " Ft");
+    setTotalKATATax(result + " Ft");
   }
 
   if(visible){
     return(
-      <div style={calculatorDivStyle}>
-        <div style={inputContainerDivStlye}>
-          <div style={inputDivStyle}>
+      <div className="calculator-div">
+        <div className="input-container-div">
+          <div className="input-div">
             <label>KATA Hónapok Száma</label>
             <MDInput ref={kataMonths}/>
           </div>
-          <div style={inputDivStyle}>
+          <div className="input-div">
             <label>Szüneteltetett Hónapok Száma</label>
             <MDInput ref={pausedMonths}/>
           </div>
-          <div style={inputDivStyle}>
+          <div className="input-div checkbox-div">
             <label>Magasabb KATA Fizetés</label>
-            <MDInput type="checkbox" ref={higherPayOption}/>
+            <input type="checkbox" ref={higherPayOption}/>
           </div>
-          <div style={inputDivStyle}>
+          <div className="input-div checkbox-div">
             <label>Részmunkaidő</label>
-            <MDInput type="checkbox" ref={partTime}/>
+            <input type="checkbox" ref={partTime}/>
           </div>
         </div>
-        <MDButton style={calculateButtonStyle} onClick={calculate}>Kiszámol</MDButton>
-        <div style={resultDivStyle} >
-          <span style={resultSpanStyle} >Fizetett Adó</span>
-          <span style={resultSpanStyle} >{totalTax}</span>
+        <MDButton className="calculate-button" onClick={calculate}>Kiszámol</MDButton>
+        <div className="KATA-result-div" >
+          <span>Fizetett Adó</span>
+          <span>{totalKATATax}</span>
         </div>
       </div>
     );
