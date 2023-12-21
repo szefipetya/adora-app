@@ -17,6 +17,7 @@ const calculateVSZJA = (income, costs, entrepreneurialPay) => {
     }
 }
 
+
 const calculateAtalany = (workType, hasQualification, costRatio, income, below25TaxCut, below30MotherTaxCut, personalTaxCut, firstMarriageTaxCut, NETAK, disabledTaxCut) => {
     let costFlatRate = income * costRatio;
     let minSocialContributionTax;
@@ -34,12 +35,12 @@ const calculateAtalany = (workType, hasQualification, costRatio, income, below25
     let socialContributionTax;
 
     if(workType === "fulltime"){
-        socialSecurityTax = Math.max(minSocialSecurityTax, costRatio * 0.185);
+        socialSecurityTax = Math.max(minSocialSecurityTax, costFlatRate * 0.185);
         socialContributionTax = Math.max(minSocialContributionTax, costFlatRate * 0.13);
     } else if(workType === "parttime") {
         socialSecurityTax = costFlatRate * 0.185;
         socialContributionTax = costFlatRate * 0.13;
-    } else {
+    } else if(workType === "retired") {
         socialSecurityTax = 0;
         socialContributionTax = 0;
     }
