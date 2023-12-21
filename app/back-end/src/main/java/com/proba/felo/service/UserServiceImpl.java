@@ -73,4 +73,12 @@ public class UserServiceImpl implements UserService {
                 .flatMap(List::stream)
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public Set<Article> getRelevantArticlesWithinAWeek(User user){
+        return user.getInterestedTags().stream()
+                .map(tag -> articleRepository.findAllByTagWithinAWeek(tag.getId()))
+                .flatMap(List::stream)
+                .collect(Collectors.toSet());
+    }
 }

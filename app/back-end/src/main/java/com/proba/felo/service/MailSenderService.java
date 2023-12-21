@@ -52,7 +52,12 @@ public class MailSenderService {
         sendTestMessage(this.FIXED_RECEIVER_EMAIL);
     }
 
-    @Scheduled(cron = "0 0 0 ? * FRI")
+
+    /*@Scheduled(
+            initialDelay=1000,
+            fixedRate=100000
+    )*/
+    @Scheduled(cron = "0 0 0 ? * FRI") // every Friday
     @Async
     public void sendArticleEmailsToUsers(){
         try {
@@ -69,7 +74,7 @@ public class MailSenderService {
                     Multipart multipart = new MimeMultipart();
                     StringBuilder sb = new StringBuilder();
                     sb.append("<html> <h2>Az eheti cikkeink, melyek érdekelhetnek:</h2>");
-                    for(Article article : userService.getRelevantArticles(user)){
+                    for(Article article : userService.getRelevantArticlesWithinAWeek(user)){
                         MimeBodyPart imagePart = new MimeBodyPart();
                         sb.append("<a href=\"\"><h4>"+ article.getTitle() + "</h4>") //TODO a href link
                                 .append("<img src=\"cid:")
