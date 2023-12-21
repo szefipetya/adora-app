@@ -49,3 +49,10 @@ VALUES
     (5, 7),
     (5, 8),
     (5, 10);
+
+INSERT INTO
+    deadlines (id, name,date,information)
+VALUES
+    (1, 'Általános forgalmi adó','2024-01-01 12:00:00','A Közösségen belüli értékesítéssel kapcsolatos szabályokba beépül az alanyi mentesség választásának lehetősége'),
+    (2, 'Általános forgalmi adó','2024-01-01 12:00:00','Egyes műalkotásoknak az Európai Unión kívülről történő behozatalára 5 százalékos kedvezményes áfa-mértéket állapítottak meg'),
+    (3, 'Általános forgalmi adó','2024-01-01 12:00:00','18 százalékos áfa-kulcs alá kerültek a desszert jellegű sajtkészítmények, köztük a túrórudi is');
