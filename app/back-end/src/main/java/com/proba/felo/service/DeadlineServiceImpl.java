@@ -36,4 +36,9 @@ public class DeadlineServiceImpl implements DeadlineService{
     public void deleteDeadline(Deadline deadline) {
         deadlineRepository.delete(deadline);
     }
+
+    @Override
+    public List<Deadline> getDeadlinesWithXDays(Integer days){
+        return deadlineRepository.findAllByOrderWithinXDays(days);
+    }
 }

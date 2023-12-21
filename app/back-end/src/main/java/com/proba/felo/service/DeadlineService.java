@@ -13,4 +13,6 @@ public interface DeadlineService {
     Deadline getNextDeadline();
     void addDeadline(Deadline deadline);
     void deleteDeadline(Deadline deadline);
+
+    List<Deadline> getDeadlinesWithXDays(Integer days);
 }
