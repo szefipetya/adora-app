@@ -19,10 +19,19 @@ function Info() {
       <MDBox mt={8}>
         <MDBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={8}>
+            <Grid item xs={12} lg={12}>
               <Grid container spacing={3}>
-                <Grid item xs={12} xl={6}></Grid>
-                <Grid item xs={12} md={6} xl={3}>
+                <Grid item xs={12} md={6} xl={4}>
+                  <Link to="/business_law">
+                    <DefaultInfoCard icon="gavel" title="Egyéni vállakozásokat érintő szabályok" description="Útmutató az egyéni vállakozásokat érintő szabályok" />
+                  </Link>
+                </Grid>
+                <Grid item xs={12} md={6} xl={4}>
+                  <Link to="/business_tax">
+                    <DefaultInfoCard icon="monetization_on" title="Egyéni vállakozások adózása" description="Útmutató az egyes adónemekhez" />
+                  </Link>
+                </Grid>
+                <Grid item xs={12} md={6} xl={4}>
                   <Link to="/new_business">
                     <DefaultInfoCard
                       icon="add_home_work"
@@ -31,15 +40,9 @@ function Info() {
                     />
                   </Link>
                 </Grid>
-                <Grid item xs={12} md={6} xl={3}>
-                  <Link to="">
-                    <DefaultInfoCard icon="account_balance" title="example" description="Example" />
-                  </Link>
-                </Grid>
                 <Grid item xs={12}></Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} lg={4}></Grid>
           </Grid>
         </MDBox>
         <MDBox mb={3}>
