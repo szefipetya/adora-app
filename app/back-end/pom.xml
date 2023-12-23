@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.proba</groupId>
-    <artifactId>felo</artifactId>
+    <artifactId>adora</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>felo</name>
+    <name>adora</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>19</java.version>
@@ -64,7 +64,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

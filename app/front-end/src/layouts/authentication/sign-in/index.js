@@ -51,7 +51,7 @@ import { handleLogError } from '../misc/Helpers'
 
 const SignIn = () => {
   const Auth = useAuth()
-  console.log(Auth)
+ // console.log(Auth)
   const isLoggedIn = Auth.userIsAuthenticated()
 
   const [username, setUsername] = useState('')
@@ -59,7 +59,7 @@ const SignIn = () => {
   const [isError, setIsError] = useState(false)
 
   const handleInputChange = (e) => {
-    console.log(e)
+    //console.log(e)
      if (e.target.name === 'username') {
       setUsername(e.target.value)
     } else if (e.target.name === 'password') {
@@ -69,7 +69,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("submit")
+    //console.log("submit")
     if (!(username && password)) {
       setIsError(true)
       return

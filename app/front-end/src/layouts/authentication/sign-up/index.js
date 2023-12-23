@@ -78,9 +78,9 @@ function Cover() {
 
     try {
       const response = await ArticleApi.signup(user)
-      const { id, name, role } = response.data
+      const { id, name, role, tags } = response.data
       const authdata = window.btoa(username + ':' + password)
-      const authenticatedUser = { id, name, role, authdata }
+      const authenticatedUser = { id, name, role, tags, authdata }
 
       Auth.userLogin(authenticatedUser)
 
@@ -138,33 +138,35 @@ function Cover() {
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
-            <MDBox mb={2}>
+            <MDBox mb={1}>
               <MDInput type="text" label="Full Name" variant="standard" fullWidth
               name='name'
               value={name}
               onChange={handleInputChange}
               />
-              <MDInput type="text" label="User Namepeter" variant="standard" fullWidth
+            </MDBox>
+            <MDBox mb={1}>
+              <MDInput type="text" label="Username" variant="standard" fullWidth
               name='username'
               value={username}
               onChange={handleInputChange}
               />
             </MDBox>
-            <MDBox mb={2}>
+            <MDBox mb={1}>
               <MDInput type="email" label="Email" variant="standard" fullWidth
                name='email'
                value={email}
                onChange={handleInputChange}
               />
             </MDBox>
-            <MDBox mb={2}>
+            <MDBox mb={1}>
               <MDInput type="password" label="Password" variant="standard" fullWidth 
                name='password'
                value={password}
                onChange={handleInputChange}
               />
             </MDBox>
-            <MDBox mb={2}>
+            <MDBox mb={1}>
             <MDTypography
                 component="a"
                 href="#"

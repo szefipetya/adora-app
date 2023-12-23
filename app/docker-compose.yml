@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  adora-back-end:
+    image: "adora/back-end"
+    container_name: adora-back-end_container
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING.PROFILES.ACTIVE=default
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+    links:
+      - postgres
+    depends_on:
+      - postgres
+  adora-front-end:
+    image: "adora/front-end"
+    container_name: adora-front-end_container
+    ports:
+      - "3000:3000"
+    links:
+      - adora-back-end
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=asd123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
