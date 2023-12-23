@@ -48,7 +48,7 @@ export default AuthContext
 
 export function useAuth() {
   //console.log(AuthContext)
-  console.log(useContext(AuthContext))
+ // console.log(useContext(AuthContext))
   return useContext(AuthContext)
 }
 
