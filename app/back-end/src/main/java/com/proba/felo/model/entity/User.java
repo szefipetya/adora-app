@@ -1,6 +1,5 @@
 package com.proba.felo.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,5 +41,9 @@ public class User {
         this.name = name;
         this.email = email;
         this.role = role;
+    }
+
+    public Set<Tag> getInterestedTags() {
+        return interestedTags;
     }
 }

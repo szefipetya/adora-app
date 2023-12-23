@@ -26,6 +26,9 @@ public class Article {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = true)
+    private String lead;
+
     @Column(nullable = false)
     private String fname;
 

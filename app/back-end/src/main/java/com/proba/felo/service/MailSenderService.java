@@ -62,7 +62,7 @@ public class MailSenderService {
     )*/
     @Scheduled(cron = "0 0 0 ? * FRI") // every Friday
     @Async
-    public void sendArticleEmailsToUsers(){
+    public void sendArticleEmailsToUsers() {
         try {
             InternetAddress senderEmail = new InternetAddress(Objects.requireNonNull(env.getProperty("spring.mail.from.email")));
             List<User> users = userService.getUsers();
@@ -77,7 +77,7 @@ public class MailSenderService {
                     Multipart multipart = new MimeMultipart();
                     StringBuilder sb = new StringBuilder();
                     sb.append("<html> <h2>Az eheti cikkeink, melyek érdekelhetnek:</h2>");
-                    for(Article article : userService.getRelevantArticlesWithinAWeek(user)){
+                    for (Article article : userService.getRelevantArticlesWithinAWeek(user)) {
                         MimeBodyPart imagePart = new MimeBodyPart();
                         sb.append("<a href=\"\"><h4>").append(article.getTitle()).append("</h4>") //TODO a href link
                                 .append("<img src=\"cid:")
@@ -87,7 +87,7 @@ public class MailSenderService {
                         imagePart.setHeader("Content-ID", article.getImage().getFname());
                         imagePart.setDisposition(MimeBodyPart.INLINE);
                         URL imageResource = this.getClass().getClassLoader().getResource("img/" + article.getImage().getFname());
-                        if(imageResource == null){
+                        if (imageResource == null) {
                             throw new IllegalArgumentException("file not found! " + article.getImage().getFname());
                         } else {
                             imagePart.attachFile(imageResource.getFile());
@@ -102,18 +102,18 @@ public class MailSenderService {
 
                     message.setContent(multipart);
                     emailSender.send(message);
-                } catch(MessagingException | IOException e){
+                } catch (MessagingException | IOException e) {
                     log.error(e.getMessage());
                 }
             }
-        } catch(AddressException ae){
+        } catch (AddressException ae) {
             log.error(ae.getMessage());
         }
     }
 
-    @Scheduled(cron = "0 0 */2 * *") //every 2 days
+    @Scheduled(cron = "0 0 */2 * * *") //every 2 days
     @Async
-    public void sendDeadlineEmailsToUsers(){
+    public void sendDeadlineEmailsToUsers() {
         try {
             InternetAddress senderEmail = new InternetAddress(Objects.requireNonNull(env.getProperty("spring.mail.from.email")));
             try {
@@ -124,7 +124,7 @@ public class MailSenderService {
 
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html> <h2>Emlékeztető</h2><h3>Egy héten belüli határidők:</h3><br>");
-                for(Deadline deadline : deadlineService.getDeadlinesWithXDays(7)){
+                for (Deadline deadline : deadlineService.getDeadlinesWithXDays(7)) {
                     sb.append("<h5>").append(deadline.getInformation()).append(":</h5>")
                             .append("<h4>").append(deadline.getDate()).append(":</h4><br><br>");
                 }
@@ -141,10 +141,10 @@ public class MailSenderService {
                     message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(user.getEmail()));
                     emailSender.send(message);
                 }
-            } catch(MessagingException e){
+            } catch (MessagingException e) {
                 log.error(e.getMessage());
             }
-        } catch(AddressException ae){
+        } catch (AddressException ae) {
             log.error(ae.getMessage());
         }
     }

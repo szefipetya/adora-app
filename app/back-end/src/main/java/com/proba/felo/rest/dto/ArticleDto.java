@@ -12,6 +12,8 @@ import java.util.Set;
 public class ArticleDto {
     private Integer id;
     private String fname;
-    private Integer image_id;
+    private String title;
+    private String lead;
+    private String image;
     private Set<TagDto> tags;
 }
