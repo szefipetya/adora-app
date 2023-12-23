@@ -1,0 +1,12 @@
+version: '3'
+services:
+  adora:
+    image: "adorafull"
+    container_name: adora-full
+    ports:
+      - "8080:8080"
+      - "5432:5432"
+      - "3000:3000"
+    environment:
+      - SPRING.PROFILES.ACTIVE=default
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres

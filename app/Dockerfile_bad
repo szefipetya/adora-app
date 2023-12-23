@@ -1,0 +1,32 @@
+# Use the official OpenJDK image as a base for the back-end service
+
+RUN docker build -t adora/back-end ./back-end/
+RUN docker build -t adora/front-end ./app/front-end/
+
+
+# POSTGRE
+FROM postgres:14-alpine as postgres
+EXPOSE 5432
+
+# BACK_END
+FROM adora/back-end:latest as back-end
+
+ENV SPRING_PROFILES_ACTIVE=default
+ENV SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+ENV POSTGRES_PASSWORD=asd123
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_DB=postgres
+EXPOSE 8080
+
+# FRONT_END
+FROM adora/front-end:latest as front-end
+
+EXPOSE 3000
+
+# The final image that will run all three services
+FROM scratch
+
+# Copy artifacts from the individual services
+COPY --from=back-end /
+COPY --from=front-end /
+COPY --from=postgres /

@@ -1,5 +1,9 @@
-# Use the official OpenJDK image as a base for the back-end service
-
-RUN docker build -t adora/back-end ./back-end/
-RUN docker build -t adora/front-end ./app/front-end/
-RUN docker-compose up
+FROM maven:3.8.7-eclipse-temurin-19 as  build
+COPY ./back-end .
+COPY ./front-end .
+CMD ["docker", "build", "-t", "adora/back-end", "./back-end/"]
+CMD ["docker", "build", "-t", "adora/front-end", "./front-end/"]
+CMD ["docker-compose", "-f" ,"./docker-compose.yml" ,"up"]
+EXPOSE 8080
+EXPOSE 5432
+EXPOSE 3000
