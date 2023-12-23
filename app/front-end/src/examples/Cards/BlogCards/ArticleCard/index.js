@@ -27,7 +27,7 @@ import MDButton from "components/MDButton";
 
 function ArticleCard({ image, title, description, action, badges }) {
   return (
-    <Card>
+    <Card item display="flex">
       <MDBox position="relative" borderRadius="lg" mt={-3} mx={2}>
         <MDBox
           component="img"
@@ -57,7 +57,7 @@ function ArticleCard({ image, title, description, action, badges }) {
         />
       </MDBox>
       <MDBox p={3}>
-        <MDTypography display="inline" variant="h3" textTransform="capitalize" fontWeight="bold">
+        <MDTypography display="inline" variant="h4" textTransform="capitalize" fontWeight="bold">
           {title}
         </MDTypography>
         <MDBox color='secondary'>
