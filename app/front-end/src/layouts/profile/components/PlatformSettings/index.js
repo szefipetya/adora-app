@@ -36,8 +36,8 @@ function PlatformSettings() {
   const [localTags, setLocalTags] = useState( updateTags());
 
   const [init, setInit] = useState( false);
-  console.log(localTags)
-  console.log(userInfo)
+ // console.log(localTags)
+ // console.log(userInfo)
   function userHasTag(tag){
     for(let i=0;i<userInfo.tags.length;i++){
       if(userInfo.tags[i].id==tag.id) return true;
@@ -52,7 +52,7 @@ function PlatformSettings() {
   function tagChanged(id){
    
       let localtagsCopy=localTags.map(tag=>{if(tag.id==id) tag.checked=! tag.checked;return tag})
-      console.log(localtagsCopy)
+     // console.log(localtagsCopy)
 
       setLocalTags(localtagsCopy);
   }
