@@ -1,7 +1,6 @@
 package com.proba.felo.runner;
 
 
-import com.proba.felo.model.entity.Article;
 import com.proba.felo.model.entity.Tag;
 import com.proba.felo.model.entity.User;
 import com.proba.felo.security.WebSecurityConfig;
@@ -13,8 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -120,15 +121,15 @@ public class DatabaseInitializer implements CommandLineRunner {
 
 
         //for testing
-        Set<Article> u1articles = userService.getRelevantArticles(u.get());
+        //Set<Article> u1articles = userService.getRelevantArticles(u.get());
         //Set<Article> u2articles = userService.getRelevantArticles(userService.getUserByUsername("user").get());
         //u2articles.isEmpty();
     }
 
-    private List<Article> getArticles() {
+   /* private List<Article> getArticles() {
         return Arrays.stream(ARTICLES_STR.split("\n"))
                 .map(articleInfoStr -> articleInfoStr.split(";"))
-                .map(articleInfoArr -> new Article(1,"test", "test.txt", new Date(), null, null))
+                .map(articleInfoArr -> new Article(1, "test", "test.txt", new Date(), null, null))
                 .collect(Collectors.toList());
-    }
+    }*/
 }

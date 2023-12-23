@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ccc092e-3d14-4028-bfc0-5e24522e1598" name="Changes" comment="Writing the README.md file.&#10;creating basic spring boot project">
-      <change afterPath="$PROJECT_DIR$/../front-end/src/examples/Cards/BlogCards/ArticleCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/hirek/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/hirek/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring.log.2023-12-14.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proba/felo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proba/felo/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proba/felo/model/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proba/felo/model/mapper/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proba/felo/rest/dto/CreateDeadlineRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proba/felo/rest/dto/CreateDeadlineRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proba/felo/rest/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proba/felo/rest/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proba/felo/runner/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proba/felo/runner/DatabaseInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proba/felo/service/MailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proba/felo/service/MailSenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/authentication/Constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/authentication/misc/ArticleApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/authentication/misc/ArticleApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/authentication/sign-up/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/authentication/sign-up/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/profile/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/profile/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/layouts/profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/layouts/profile/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/services/featureservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/services/featureservice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../.." value="article-frontend" />
+        <entry key="$PROJECT_DIR$/../.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -56,7 +69,6 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -66,23 +78,25 @@
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="274aDT7YkTIp5HOPzbv6IGz1WPw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="rearrange.code.on.save" value="true" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FeloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/DEV/adora-app&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  }
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn install" />
@@ -92,7 +106,7 @@
   <component name="RunManager">
     <configuration name="FeloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.proba.felo.FeloApplication" />
-      <module name="back-end" />
+      <module name="felo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.proba.felo.*" />
@@ -108,6 +122,13 @@
         <item itemvalue="Application.FeloApplication" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-19.0.2-corretto-19.0.2-249ae16d76d6-36550cda" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -154,6 +175,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="final code version, cleanup can be done, readme is remaining" />
     <MESSAGE value="Writing the README.md file.&#10;- added the spring.log file for example output." />
     <MESSAGE value="Writing the README.md file.&#10;creating basic spring boot project" />

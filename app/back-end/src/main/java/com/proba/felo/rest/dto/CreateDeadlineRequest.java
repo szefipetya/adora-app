@@ -1,11 +1,10 @@
 package com.proba.felo.rest.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
-@Data
+
 public record CreateDeadlineRequest() {
     @Schema(example = "Általános forgalmi adó")
     @NotBlank
