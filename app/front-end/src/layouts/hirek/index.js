@@ -21,74 +21,45 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 import ArticleCard from "examples/Cards/BlogCards/ArticleCard";
 import parse from 'html-react-parser'
+import { config } from "./Constants"
 
-
-import { Link } from "react-router-dom";
-import MDButton from "components/MDButton";
 
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 
-// Data
-const articles = [
-  { 'title': 'TITLE', 'lead': 'LEAD', 'tags': ['TAG1', 'TAG2', 'TAG3'], 'url': '/somewhere', 'image': 'https://bit.ly/3Hlw1MQ', 'content': '##CONTENT  \ncontent' },
-  { 'title': 'TITLE', 'lead': 'LEAD', 'tags': ['TAG1', 'TAG2', 'TAG3'], 'url': '/somewhere', 'image': 'https://bit.ly/3Hlw1MQ', 'content': '##CONTENT  \ncontent' },
-  { 'title': 'TITLE', 'lead': 'LEAD', 'tags': ['TAG1', 'TAG2', 'TAG3'], 'url': '/somewhere', 'image': 'https://bit.ly/3Hlw1MQ', 'content': '##CONTENT  \ncontent' },
-];
+const url = config['url']['API_BASE_URL'];
+function httpGet(theUrl) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false); // false for synchronous request
+  xmlHttp.send(null);
+  return JSON.parse(xmlHttp.responseText);
+}
 
+// Data
+const articles = httpGet(config['url']['API_BASE_URL'] + '/api/articles');
 
 function Hirek() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      Hirek
       <Grid>
         <MDBox py={3}>
-          <Grid container spacing={3}>
-            <Grid item>
-              <MDBox>
-                <Grid item>
-                  <Link to={"/hirek"}>
-                    <MDButton color="primary">{"Vissza"}</MDButton>
-                  </Link>
-                </Grid>
-                <Card>
-                  <MDBox position="relative" borderRadius="lg" mt={3}>
-                    <MDBox
-                      component="img"
-                      src='https://bit.ly/3Hlw1MQ'
-                      alt='alt'
-                      borderRadius="lg"
-                      shadow="md"
-                      width="50%"
-                      height="50%"
-                      position="relative"
-                      mx={3}
-                    />
-                  </MDBox>
-                  <MDBox py={3} mx={3}>
-                    {parse(converter.makeHtml("## Alma  \n körte"))}
-                  </MDBox>
-                </Card>
-              </MDBox>
-            </Grid>
-          </Grid>
-        </MDBox>
-      </Grid>
-      <Grid>
-        <MDBox py={3}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3}
+            justifyContent="left"
+            alignItems="stretch">
             {articles.map((item, index) => {
-              return <Grid item key={index} xs={12} md={6} lg={3}>
+              return <Grid item key={index} xs={12} md={6} lg={4}>
                 <MDBox mb={1.5}>
                   <ArticleCard
-                    image={item["image"]}
+                    image={"/images/" + item["image"]}
                     title={item["title"]}
                     description={item["lead"]}
-                    badges={item["tags"]}
+                    badges={item["tags"].map((item, index) => {
+                      return item['caption'];
+                    })}
                     action={{
                       type: "internal",
-                      route: item["url"],
+                      route: "/articles/" + item["id"],
                       label: "Cikk megnyitása"
                     }}
                   />
