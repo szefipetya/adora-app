@@ -10,22 +10,27 @@ import java.util.stream.Collectors;
 @Service
 public class ArticleMapperImpl implements ArticleMapper {
 
-  /*  @Override
-    public Article toArticle(ArticleDto dto) {
-        if (dto == null) {
-            return null;
-        }
-        return new Article(dto.getId(), dto.getFname(), dto.getImage_id());
-    }*/
+    /*
+     * @Override
+     * public Article toArticle(ArticleDto dto) {
+     * if (dto == null) {
+     * return null;
+     * }
+     * return new Article(dto.getId(), dto.getFname(), dto.getImage_id());
+     * }
+     */
 
     @Override
     public ArticleDto toArticleDto(Article article) {
         if (article == null) {
             return null;
         }
-        return new ArticleDto(article.getId(),
+        return new ArticleDto(
+                article.getId(),
                 article.getFname(),
-                article.getImage().getId(),
+                article.getTitle(),
+                article.getLead(),
+                article.getImage().getFname(),
                 article.getTagRelTags().stream()
                         .map(tag -> new TagDto(tag.getId(), tag.getCaption()))
                         .collect(Collectors.toSet()));

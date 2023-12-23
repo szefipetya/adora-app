@@ -36,7 +36,7 @@ function NewBusinessInfoFormFilling() {
         Az adózási módokról bővebb tájékoztatót itt talál:
       </MDTypography>
       <MDBox borderRadius="lg" p={2} style={{ textAlign: "center" }}>
-        <Link to="/">
+        <Link to="/business_tax">
           <MDButton variant="gradient" color="secondary">
             Adózási módok
           </MDButton>

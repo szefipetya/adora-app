@@ -8,15 +8,11 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class CreateArticleRequest {
 
-    @Schema(example = "9781849518260")
+    @Schema(example = "Spring Security 3.1")
     @NotBlank
-    private String isbn;
+    private String fname;
 
     @Schema(example = "Spring Security 3.1")
     @NotBlank
-    private String title;
-
-    @Schema(example = "Spring Security 3.1")
-    @NotBlank
-    private String content;
+    private String image_id;
 }
