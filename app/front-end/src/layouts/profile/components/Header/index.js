@@ -37,12 +37,20 @@ import breakpoints from "assets/theme/base/breakpoints";
 // Images
 import burceMars from "assets/images/bruce-mars.jpg";
 import backgroundImage from "assets/images/bg-profile.jpeg";
+import { ApiService } from "services/featureservice";
 
 function Header({ children }) {
+
+
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
-
+  const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
+   
+      
+      /*   const info = ApiService.getUserInfo();
+        setUserInfo(info);
+       */
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
       return window.innerWidth < breakpoints.values.sm
@@ -63,8 +71,7 @@ function Header({ children }) {
   }, [tabsOrientation]);
 
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);
-
-  return (
+  return ( 
     <MDBox position="relative" mb={5}>
       <MDBox
         display="flex"
@@ -99,7 +106,7 @@ function Header({ children }) {
           <Grid item>
             <MDBox height="100%" mt={0.5} lineHeight={1}>
               <MDTypography variant="h5" fontWeight="medium">
-                Richard Davis
+               Richard Davis
               </MDTypography>
               <MDTypography variant="button" color="text" fontWeight="regular">
                 CEO / Co-Founder
