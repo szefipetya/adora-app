@@ -1,0 +1,35 @@
+version: '3'
+services:
+  adora-back-end:
+    image: docker.io/speterz199/adora-back-end:1.0
+    container_name: adora-back-end_container
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING.PROFILES.ACTIVE=default
+      - app.cors.allowed-origins=http://localhost:3000, http://81.183.58.110, http://81.183.58.110:3000, http://adora.freeddns.org,http://adora.freeddns.org:3000
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+    links:
+      - postgres
+    depends_on:
+      - postgres
+  adora-front-end:
+    image: docker.io/speterz199/adora-front-end:1.0
+    container_name: adora-front-end_container
+    environment:
+      - NODE_ENV=prod
+      - API_HOST=http://81.183.58.110:8080
+    ports:
+      - "3000:3000"
+    links:
+      - adora-back-end
+  postgres:
+    image: docker.io/speterz199/adora-db:1.0
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=asd123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
