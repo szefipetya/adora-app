@@ -33,7 +33,7 @@ function PlatformSettings() {
   const [newLaunches, setNewLaunches] = useState(true);
   const [productUpdate, setProductUpdate] = useState(true);
   const [newsletter, setNewsletter] = useState(true);
-  const [message, setMessage] = useState("true");
+  const [message, setMessage] = useState("");
   const [userInfo, setuserInfo] = useState( getUserInfo());
   const [localTags, setLocalTags] = useState( updateTags());
 
