@@ -26,6 +26,9 @@ function AuthProvider({ children }) {
 
   const userLogout = () => {
     localStorage.removeItem('user')
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('tags')
+    localStorage.removeItem('deadlines')
     setUser(null)
   }
 

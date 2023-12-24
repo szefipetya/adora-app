@@ -21,17 +21,19 @@ import Switch from "@mui/material/Switch";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
+import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
 import { getTags } from "services/featureservice";
 import { getUserInfo } from "services/featureservice";
 
 function PlatformSettings() {
   const [followsMe, setFollowsMe] = useState(true);
-  const [answersPost, setAnswersPost] = useState(false);
+  const [answersPost, setAnswersPost] = useState(true);
   const [mentionsMe, setMentionsMe] = useState(true);
-  const [newLaunches, setNewLaunches] = useState(false);
+  const [newLaunches, setNewLaunches] = useState(true);
   const [productUpdate, setProductUpdate] = useState(true);
-  const [newsletter, setNewsletter] = useState(false);
+  const [newsletter, setNewsletter] = useState(true);
+  const [message, setMessage] = useState("true");
   const [userInfo, setuserInfo] = useState( getUserInfo());
   const [localTags, setLocalTags] = useState( updateTags());
 
@@ -67,9 +69,13 @@ function PlatformSettings() {
       }
       //setLocalTags(localtagsCopy);
       return localtagsCopy;
-    
     } 
     
+    function handleSubmit(data){
+      console.log("submit",localTags)
+      setMessage("Frissítés...")
+      setTimeout(()=>setMessage("Sikeres mentés"),Math.random()*200+200)
+    }
   
  
   return (
@@ -130,8 +136,23 @@ function PlatformSettings() {
                     </MDBox>
                   </MDBox>
           })}
-        
-        
+          <MDBox mt={3} mb={1} mx={2} textAlign="center">
+              <MDButton variant="gradient" color="info" fullWidth onClick={handleSubmit}>
+                Mentés
+              </MDButton>
+            </MDBox>
+            <MDBox mb={1}>
+            <MDTypography
+                component="a"
+                href="#"
+                variant="button"
+                fontWeight="bold"
+                color="info"
+                textGradient
+              >
+                {message}
+              </MDTypography>
+              </MDBox>
       </MDBox>
     </Card>
   );
