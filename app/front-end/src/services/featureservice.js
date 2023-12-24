@@ -26,6 +26,7 @@ function getUserInfo() {
       }     
 }
 function getTags() {  
+  if(!useAuth().getUser()) return null;
   if(localStorage.getItem("tags")){
     return JSON.parse(localStorage.getItem("tags"))
   }else{ 
@@ -42,17 +43,18 @@ function getDeadlines(){
     return JSON.parse(localStorage.getItem("deadlines"))
   }else{ 
     const url = config.url.API_BASE_URL+"/api/deadlines"
-    let data = httpGet(url)
+    let data = httpGet(url,false)
       // console.log("data",data)        
         localStorage.setItem("deadlines",JSON.stringify(data));
     return data;           
   }   
 }
 
-function httpGet(theUrl) {
+function httpGet(theUrl,autenticated=true) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("GET", theUrl, false); // false for synchronous request
-  xmlHttp.setRequestHeader('Authorization',basicAuth(useAuth().getUser()))
+  if(autenticated)
+    xmlHttp.setRequestHeader('Authorization',basicAuth(useAuth().getUser()))
   xmlHttp.send(null);
   return JSON.parse(xmlHttp.responseText);
 }
