@@ -37,6 +37,17 @@ function getTags() {
   }   
 }    
 
+function getDeadlines(){
+  if(localStorage.getItem("deadlines")){
+    return JSON.parse(localStorage.getItem("deadlines"))
+  }else{ 
+    const url = config.url.API_BASE_URL+"/api/deadlines"
+    let data = httpGet(url)
+      // console.log("data",data)        
+        localStorage.setItem("deadlines",JSON.stringify(data));
+    return data;           
+  }   
+}
 
 function httpGet(theUrl) {
   var xmlHttp = new XMLHttpRequest();
@@ -46,7 +57,7 @@ function httpGet(theUrl) {
   return JSON.parse(xmlHttp.responseText);
 }
 
-export {getUserInfo,httpGet,getTags}
+export {getUserInfo,httpGet,getTags,getDeadlines}
 
 
 

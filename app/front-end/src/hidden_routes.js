@@ -6,6 +6,8 @@ import BusinessTaxInfo from "layouts/info/components/BusinessTaxInfo";
 import BusinessLawInfo from "layouts/info/components/BusinessLawInfo";
 import ArticleShow from "layouts/hirek/components/ArticleShow";
 import { config } from "Constants";
+import Hirek from "layouts/hirek";
+import Ertesitesek from "layouts/ertesitesek";
 
 function httpGet(theUrl) {
   var xmlHttp = new XMLHttpRequest();
@@ -48,6 +50,22 @@ const hidden_routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/articles/01",
     component: <BusinessLawInfo />,
+  },
+  {
+    type: "collapse",
+    name: "Dashboard",
+    key: "dashboard",
+    icon: <Icon fontSize="small">dashboard</Icon>,
+    route: "/dashboard",
+    component: <Hirek />,
+  },
+  {
+    type: "collapse",
+    name: "Ertesitesek",
+    key: "ertesitesek",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/ertesitesek",
+    component: <Ertesitesek />,
   },
 ];
 

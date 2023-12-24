@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table(name = "deadline")
+@Table(name = "deadlines")
 public class Deadline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

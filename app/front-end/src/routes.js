@@ -52,14 +52,6 @@ import Ertesitesek from "./layouts/ertesitesek";
 const routes = [
   {
     type: "collapse",
-    name: "Dashboard",
-    key: "dashboard",
-    icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
-  },
-  {
-    type: "collapse",
     name: "Hirek",
     key: "hirek",
     icon: <Icon fontSize="small">table_view</Icon>,
@@ -84,20 +76,13 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Hataridok",
+    name: "Határidők",
     key: "hataridok",
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/hataridok",
     component: <Hataridok />,
   },
-  {
-    type: "collapse",
-    name: "Ertesitesek",
-    key: "ertesitesek",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/ertesitesek",
-    component: <Ertesitesek />,
-  },
+ 
   {
     type: "collapse",
     name: "Profile",
