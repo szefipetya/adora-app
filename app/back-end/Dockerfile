@@ -5,10 +5,8 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY ./pom.xml .
 COPY ./src src
-COPY ./apache-maven-3.9.6 apache-maven-3.9.6
 #COPY --from=build-node ./src/main/resources ./src/main/resources
 
-ENV M3_HOME=./apache-maven-3.9.6
 RUN mvn install -DskipTests
 
 

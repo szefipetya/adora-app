@@ -32,7 +32,7 @@ For version controlling and C/I we used github. Our public github repository is 
 
 ### Issue tracker
 We used agile development style during the project. TO ensure the flow of our project's development, we used Trello as our issue-tracker: https://trello.com/b/ZuLQk4OK/adóra
-![Trello](image.png)
+
 
 ## MVP user stories
 User stories can be overlooked in the attached Finalized_User Stories.xlsx
