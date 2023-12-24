@@ -5,6 +5,7 @@ import NewBusinessInfo from "layouts/info/components/NewBusinessInfo";
 import BusinessTaxInfo from "layouts/info/components/BusinessTaxInfo";
 import BusinessLawInfo from "layouts/info/components/BusinessLawInfo";
 import ArticleShow from "layouts/hirek/components/ArticleShow";
+import { config } from "Constants";
 
 function httpGet(theUrl) {
   var xmlHttp = new XMLHttpRequest();
@@ -12,8 +13,8 @@ function httpGet(theUrl) {
   xmlHttp.send(null);
   return JSON.parse(xmlHttp.responseText);
 }
-
-const articles = httpGet('http://localhost:8080/api/articles');
+console.log("processenv"+process.env)
+const articles = httpGet(config.url.API_BASE_URL+'/api/articles');
 
 const hidden_routes = [
   {

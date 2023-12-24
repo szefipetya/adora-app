@@ -21,13 +21,13 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 import ArticleCard from "examples/Cards/BlogCards/ArticleCard";
 import parse from 'html-react-parser'
-import { config } from "./Constants"
+import { config } from "../../Constants";
+
 
 
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 
-const url = config['url']['API_BASE_URL'];
 function httpGet(theUrl) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("GET", theUrl, false); // false for synchronous request
@@ -36,8 +36,10 @@ function httpGet(theUrl) {
 }
 
 // Data
-const articles = httpGet(config['url']['API_BASE_URL'] + '/api/articles');
+console.log(config)
+console.log(process.env);
 
+const articles = httpGet(config.url.API_BASE_URL + '/api/articles');
 function Hirek() {
   return (
     <DashboardLayout>

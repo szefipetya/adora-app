@@ -23,6 +23,7 @@
     "chart.js": "4.3.0",
     "chroma-js": "2.4.2",
     "html-react-parser": "5.0.7",
+    "http-server": "^14.1.1",
     "material-ui-image": "^3.3.2",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
@@ -42,8 +43,9 @@
     "yup": "1.1.1"
   },
   "scripts": {
-    "start": "./node_modules/.bin/react-scripts start",
-    "build": "./node_modules/.bin/react-scripts build",
+    "start": "react-scripts start NODE_ENV=production PUBLIC_URL=http://81.183.58.110:8080",
+    "build": "react-scripts build",
+    "start-server": "http-server -p 3000 ./build NODE_ENV=production PUBLIC_URL=http://81.183.58.110:8080",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
