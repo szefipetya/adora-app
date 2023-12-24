@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'; // Add this import
+import { emptyCache } from 'services/featureservice';
 
 const AuthContext = createContext()
 // eslint-disable-next-line
@@ -25,10 +26,8 @@ function AuthProvider({ children }) {
   }
 
   const userLogout = () => {
-    localStorage.removeItem('user')
-    localStorage.removeItem('userInfo')
-    localStorage.removeItem('tags')
-    localStorage.removeItem('deadlines')
+    emptyCache();
+    localStorage.removeItem("user");
     setUser(null)
   }
 

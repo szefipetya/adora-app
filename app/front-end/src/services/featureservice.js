@@ -59,7 +59,14 @@ function httpGet(theUrl,autenticated=true) {
   return JSON.parse(xmlHttp.responseText);
 }
 
-export {getUserInfo,httpGet,getTags,getDeadlines}
+function emptyCache(){
+  localStorage.removeItem("userInfo")
+  localStorage.removeItem("tags")
+  localStorage.removeItem("deadlines")
+  return false;
+}
+
+export {getUserInfo,httpGet,getTags,getDeadlines,emptyCache}
 
 
 

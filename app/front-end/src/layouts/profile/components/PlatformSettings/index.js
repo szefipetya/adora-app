@@ -25,6 +25,7 @@ import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
 import { getTags } from "services/featureservice";
 import { getUserInfo } from "services/featureservice";
+import { emptyCache } from "services/featureservice";
 
 function PlatformSettings() {
   const [followsMe, setFollowsMe] = useState(true);
@@ -35,9 +36,8 @@ function PlatformSettings() {
   const [newsletter, setNewsletter] = useState(true);
   const [message, setMessage] = useState("");
   const [userInfo, setuserInfo] = useState( getUserInfo());
-  const [localTags, setLocalTags] = useState( updateTags());
-
-  const [init, setInit] = useState( false);
+  const [localTags, setLocalTags] = useState(updateTags());
+  
  // console.log(localTags)
  // console.log(userInfo)
   function userHasTag(tag){
@@ -52,14 +52,14 @@ function PlatformSettings() {
   }
 
   function tagChanged(id){
-   
+    
       let localtagsCopy=localTags.map(tag=>{if(tag.id==id) tag.checked=! tag.checked;return tag})
      // console.log(localtagsCopy)
 
       setLocalTags(localtagsCopy);
   }
   function updateTags(){
-    
+
       let localtagsCopy = getTags();//JSON.parse(JSON.stringify(localTags));
 
         for(let i=0;i<localtagsCopy.length;i++){
@@ -72,13 +72,14 @@ function PlatformSettings() {
     } 
     
     function handleSubmit(data){
-      console.log("submit",localTags)
+            console.log("submit",localTags)
       setMessage("Frissítés...")
-      setTimeout(()=>setMessage("Sikeres mentés"),Math.random()*200+200)
+      setTimeout(()=>{setMessage("Sikeres mentés");emptyCache();},Math.random()*200+200)
     }
   
  
   return (
+    
     <Card sx={{ boxShadow: "none" }}>
       <MDBox pl={2}>
         <MDTypography variant="h3" fontWeight="medium" textTransform="capitalize">
