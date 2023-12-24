@@ -121,7 +121,7 @@ function Hataridok() {
           <Grid item xs={12} lg={8}>
             <Card >
               <MDBox p={2}>
-                <MDTypography variant="h5">Határidők</MDTypography>
+                <MDTypography variant="h2">Határidők</MDTypography>
               </MDBox>
               {deadlines.map((item, index) => {
               return <MDBox item key={index} pt={4} px={2}>
@@ -133,8 +133,13 @@ function Hataridok() {
                     width="100%"
                     height="100%"
                     position="relative"
-                    zIndex={1}>
-                  <MDTypography pl={2} variant="h5" type="date">{ new Date(parseInt(item.date)).toDateString()}</MDTypography>
+                    zIndex={1}
+                    variant="gradient"
+                    bgColor="info"
+                    coloredShadow="info"
+                    >
+                      
+                  <MDTypography pl={2} variant="h5" color="white" type="date">{ new Date(parseInt(item.date)).toDateString()}</MDTypography>
                    </MDBox>
                     <MDBox
                       borderRadius="lg"
@@ -153,7 +158,7 @@ function Hataridok() {
                     />
                   </MDBox>
                   <MDBox p={3}>
-                    <MDTypography display="inline" variant="h3" textTransform="capitalize" fontWeight="bold">
+                    <MDTypography display="inline" variant="h4" textTransform="capitalize" fontWeight="bold">
                       {item.name}
                     </MDTypography>
                     <MDBox mt={2} mb={3}>
